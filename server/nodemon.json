@@ -1,0 +1,5 @@
+{
+  "verbose": false,
+  "exec": "babel-node src/bin/www.js",
+  "ignore": []
+}

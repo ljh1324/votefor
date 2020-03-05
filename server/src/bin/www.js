@@ -1,8 +1,16 @@
 import '../config/env';
 import app from '../app';
+import dbSync from './db-sync';
 
-const port = process.env.PORT || 3000;
+const { force, PORT } = process.env;
+const port = PORT || 3000;
 
-app.listen(port, () => {
-  console.log('Server start');
-});
+dbSync({ force })
+  .then(() => {
+    app.listen(port, () => {
+      console.log('Server start');
+    });
+  })
+  .catch(err => {
+    console.log(err);
+  });

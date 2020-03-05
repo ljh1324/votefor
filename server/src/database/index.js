@@ -1,23 +1,26 @@
 import fs from 'fs';
 import path from 'path';
 import Sequelize from 'sequelize';
+import logger from '../lib/logger';
 
 const db = {};
 const { DB_SCHEMA, DB_USERNAME, DB_PASSWORD, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(DB_SCHEMA, DB_USERNAME, DB_PASSWORD, {
   host: DB_HOST,
-  dialect: 'mysql'
+  dialect: 'mysql',
+  logging: false
 });
 
-sequelize.authenticate().then(errors => {
-  // 연결 확인
-  if (errors) {
-    console.log(errors);
-  } else {
+sequelize
+  .authenticate()
+  .then(() => {
     console.log('DB Connection established successfully.');
-  }
-});
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database');
+    logger.error(err.name);
+  });
 
 const MODEL_DIRECTORY = '/models';
 const MODEL_DIRECTORY_PATH = path.join(__dirname, MODEL_DIRECTORY);

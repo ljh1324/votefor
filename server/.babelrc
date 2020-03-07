@@ -1,5 +1,17 @@
 {
-  "presets": ["@babel/preset-env"],
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        // https://github.com/babel/babel/issues/9849#issuecomment-487493619
+        // https://github.com/babel/babel/issues/8829
+        // https://babeljs.io/docs/en/babel-preset-env
+        "targets": {
+          "esmodules": true
+        }
+      }
+    ]
+  ],
   "sourceMaps": "inline",
   "retainLines": true
 }

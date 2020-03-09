@@ -9,7 +9,8 @@ const model = (sequelize, DataTypes) => {
       },
       name: {
         type: DataTypes.STRING(20),
-        allowNull: false
+        allowNull: false,
+        unique: true
       },
       image: {
         type: DataTypes.TEXT,

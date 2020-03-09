@@ -1,0 +1,12 @@
+{
+  "categories": [
+    { "name": "경제" },
+    { "name": "사회" },
+    { "name": "문화" },
+    { "name": "교육" },
+    { "name": "국방" },
+    { "name": "기타" }
+  ],
+  "parties": [],
+  "promises": []
+}

@@ -7,13 +7,15 @@
     "dev": "export NODE_ENV=development || set \"NODE_ENV=development\" && nodemon --config nodemon.json",
     "dev:force": "export force=true || SET \"force=true\" && npm run dev",
     "build": "babel -d ./build ./src -s",
-    "start": "export NODE_ENV=production || set \"NODE_ENV=production\" && node build/bin/www.js"
+    "start": "export NODE_ENV=production || set \"NODE_ENV=production\" && node build/bin/www.js",
+    "seed:dev": "export NODE_ENV=development || set \"NODE_ENV=development\" && babel-node seed/create-seed-data.js"
   },
   "author": "hwanlee",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "http-status": "^1.4.2",
     "moment": "^2.24.0",
     "morgan": "^1.9.1",
     "mysql2": "^2.1.0",

@@ -41,6 +41,16 @@ const model = (sequelize, DataTypes) => {
     });
   };
 
+  ElectionPromise.findAllPromises = () => {
+    return ElectionPromise.findAll({
+      raw: true,
+      include: [
+        { model: sequelize.models.Category, required: true },
+        { model: sequelize.models.PoliticalParty, required: true }
+      ]
+    });
+  };
+
   return ElectionPromise;
 };
 

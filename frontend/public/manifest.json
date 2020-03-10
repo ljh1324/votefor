@@ -1,0 +1,9 @@
+{
+  "short_name": "당신의 선택은?",
+  "name": "당신의 선택은?",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

@@ -6,8 +6,4 @@ const Header = styled.div`
   padding: 30px;
 `;
 
-const AppName = styled.span`
-  font-size: 2rem;
-`;
-
-export { Header, AppName };
+export { Header };

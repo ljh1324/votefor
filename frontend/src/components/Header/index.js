@@ -1,10 +1,12 @@
 import React from "react";
 import * as S from "./styled";
 
+import Title from "../Title";
+
 const Header = () => {
   return (
     <S.Header>
-      <S.AppName>당신의 정당은?</S.AppName>
+      <Title />
     </S.Header>
   );
 };

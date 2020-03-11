@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 import * as GS from "../components/GlobalStyle";
 import Header from "../components/Header";
@@ -6,6 +7,12 @@ import Image from "../components/Image";
 import Button from "../components/Button";
 
 const Home = () => {
+  const history = useHistory();
+
+  const handleLinkBtnClick = () => {
+    history.push("/voting");
+  };
+
   return (
     <GS.FlexWrap>
       <Header />
@@ -18,6 +25,7 @@ const Home = () => {
         height={"50px"}
         fontColor={"white"}
         fontSize={"20px"}
+        onClick={handleLinkBtnClick}
       />
     </GS.FlexWrap>
   );

@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <GS.FlexWrap>
       <Header />
-      <Image link={"/vote.png"} />
+      <Image src={"/vote.png"} width={"200px"} />
       <Button
         text={"투표하기"}
         color={"#1abc9c"}

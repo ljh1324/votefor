@@ -1,12 +1,8 @@
 import React from "react";
 import * as S from "./styled";
 
-const Image = ({ link }) => {
-  return (
-    <S.ImageWrapper>
-      <S.Image src={link} />
-    </S.ImageWrapper>
-  );
+const Image = ({ src, width }) => {
+  return <S.Image src={src} width={width} />;
 };
 
 export default Image;

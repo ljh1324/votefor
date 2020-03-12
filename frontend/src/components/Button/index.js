@@ -1,7 +1,17 @@
 import React from "react";
 import * as S from "./styled";
 
-const Button = ({ text, color, activeColor, width, height, fontColor, fontSize, onClick }) => {
+const Button = ({
+  text,
+  color,
+  activeColor,
+  width,
+  height,
+  fontColor,
+  fontSize,
+  onClick,
+  border
+}) => {
   return (
     <S.Button
       color={color}
@@ -10,6 +20,7 @@ const Button = ({ text, color, activeColor, width, height, fontColor, fontSize, 
       height={height}
       fontColor={fontColor}
       fontSize={fontSize}
+      border={border}
       onClick={onClick}
     >
       {text}

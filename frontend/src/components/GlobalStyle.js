@@ -10,10 +10,17 @@ const FlexWrap = styled.div`
 
 const FlexWrapWithHorizontalCentering = styled.div`
   height: 100vh;
-  width: 100vw;
+  width: ${props => props.width};
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-export { FlexWrap, FlexWrapWithHorizontalCentering };
+const FlexRowDirWrap = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
+export { FlexWrap, FlexWrapWithHorizontalCentering, FlexRowDirWrap };

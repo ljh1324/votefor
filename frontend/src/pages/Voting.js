@@ -45,7 +45,7 @@ const dummy = [
 
 const Voting = () => {
   return (
-    <GS.FlexWrapWithHorizontalCentering>
+    <GS.FlexWrapWithHorizontalCentering width="100vw">
       <TitleWithLogo />
       <CategoryList categories={dummy} />
       <Button

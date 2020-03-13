@@ -7,12 +7,17 @@ const ItemWrapper = styled.li`
   font-size: 1.5rem;
   border: ${props => (props.voted ? "5px solid #16a085" : "2px solid gray")};
   border-radius: 10px;
-  margin: 20px 0;
   cursor: pointer;
   user-select: none;
   &:active {
     border: ${props => (props.voted ? "5px solid #16a085" : "2px solid black")};
+    background: ${props => (props.voted ? "white" : "#f1f2f6")};
   }
 `;
 
-export { ItemWrapper };
+const Text = styled.div`
+  width: 100%;
+  color: black;
+`;
+
+export { ItemWrapper, Text };

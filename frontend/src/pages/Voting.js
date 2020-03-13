@@ -1,53 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { AppStateContext } from "../context";
 
 import * as GS from "../components/GlobalStyle";
 import TitleWithLogo from "../components/TitleWithLogo";
 import CategoryList from "../components/CategoryList";
 import Button from "../components/Button";
 
-const dummy = [
-  {
-    name: "기술",
-    voted: false,
-    promises: []
-  },
-  {
-    name: "교육",
-    voted: true,
-    promises: []
-  },
-  {
-    name: "국방",
-    voted: false,
-    promises: []
-  },
-  {
-    name: "농림",
-    voted: false,
-    promises: []
-  },
-  {
-    name: "보건",
-    voted: true,
-    promises: []
-  },
-  {
-    name: "사회복지",
-    voted: true,
-    promises: []
-  },
-  {
-    name: "기타",
-    voted: false,
-    promises: []
-  }
-];
+import { objectToList } from "../utils/convert";
 
 const Voting = () => {
+  const { state } = useContext(AppStateContext);
+  const categoryList = objectToList(state.categories, "name");
+
   return (
     <GS.FlexWrapWithHorizontalCentering width="100vw">
       <TitleWithLogo />
-      <CategoryList categories={dummy} />
+      <CategoryList categories={categoryList} />
       <Button
         text={"확인"}
         color={"#1abc9c"}

@@ -30,34 +30,39 @@ const CircleGraph = ({ nums, items, unit, total, width, padding }) => {
   const cx = width / 2 + padding;
   const cy = width / 2 + padding;
   const radius = width / 2 - padding * 2;
+  let renderingCircleGraph;
 
-  const angleRanges = calculateAngleRanges(nums, total);
+  if (nums.length >= 2) {
+    const angleRanges = calculateAngleRanges(nums, total);
 
-  const renderingCircleGraph = angleRanges.map(({ start, end }, idx) => {
-    const startPoint = polarToCartesian(cx, cy, radius, end);
-    const endPoint = polarToCartesian(cx, cy, radius, start);
-    const largeArcFlag = end - start <= 180 ? "0" : "1";
+    renderingCircleGraph = angleRanges.map(({ start, end }, idx) => {
+      const startPoint = polarToCartesian(cx, cy, radius, end);
+      const endPoint = polarToCartesian(cx, cy, radius, start);
+      const largeArcFlag = end - start <= 180 ? "0" : "1";
 
-    const d = [
-      "M",
-      startPoint.x,
-      startPoint.y,
-      "A",
-      radius,
-      radius,
-      0,
-      largeArcFlag,
-      0,
-      endPoint.x,
-      endPoint.y,
-      "L",
-      cx,
-      cy,
-      "Z"
-    ].join(" ");
+      const d = [
+        "M",
+        startPoint.x,
+        startPoint.y,
+        "A",
+        radius,
+        radius,
+        0,
+        largeArcFlag,
+        0,
+        endPoint.x,
+        endPoint.y,
+        "L",
+        cx,
+        cy,
+        "Z"
+      ].join(" ");
 
-    return <path d={d} stroke="white" strokeWidth="7" fill={items[idx].color}></path>;
-  });
+      return <path d={d} stroke="white" strokeWidth="7" fill={items[idx].color}></path>;
+    });
+  } else {
+    renderingCircleGraph = <circle cx={cx} cy={cy} r={radius} fill={items[0].color} />;
+  }
 
   const renderingItems = items.map(({ name, color }) => (
     <S.ItemWrapper>

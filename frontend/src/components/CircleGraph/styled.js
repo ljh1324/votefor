@@ -22,7 +22,7 @@ const ItemWrapper = styled.div`
   align-items: center;
 `;
 
-const Name = styled.span`
+const DescText = styled.span`
   font-size: 1rem;
 `;
 
@@ -34,4 +34,4 @@ const Color = styled.div`
   margin: 0 10px;
 `;
 
-export { GraphWrapper, DescWrapper, ItemWrapper, Name, Color };
+export { GraphWrapper, DescWrapper, ItemWrapper, DescText, Color };

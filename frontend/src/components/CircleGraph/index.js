@@ -26,7 +26,7 @@ const calculateAngleRanges = (nums, total) => {
   return angleRanges;
 };
 
-const CircleGraph = ({ nums, items, unit, total, width, padding }) => {
+const CircleGraph = ({ nums, items, total, width, padding }) => {
   const cx = width / 2 + padding;
   const cy = width / 2 + padding;
   const radius = width / 2 - padding * 2;
@@ -64,10 +64,10 @@ const CircleGraph = ({ nums, items, unit, total, width, padding }) => {
     renderingCircleGraph = <circle cx={cx} cy={cy} r={radius} fill={items[0].color} />;
   }
 
-  const renderingItems = items.map(({ name, color }) => (
+  const renderingItems = items.map(({ name, color }, idx) => (
     <S.ItemWrapper>
       <S.Color color={color} />
-      <S.Name>{name}</S.Name>
+      <S.DescText>{`${name} (${Math.round((nums[idx] / total) * 1000) / 10}%)`}</S.DescText>
     </S.ItemWrapper>
   ));
 

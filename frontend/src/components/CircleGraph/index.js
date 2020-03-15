@@ -56,7 +56,7 @@ const CircleGraph = ({ nums, items, unit, total, width, padding }) => {
       "Z"
     ].join(" ");
 
-    return <path d={d} stroke="white" strokeWidth="1" fill={items[idx].color}></path>;
+    return <path d={d} stroke="white" strokeWidth="7" fill={items[idx].color}></path>;
   });
 
   const renderingItems = items.map(({ name, color }) => (
@@ -70,6 +70,7 @@ const CircleGraph = ({ nums, items, unit, total, width, padding }) => {
     <S.GraphWrapper>
       <svg width={width} height={width}>
         {renderingCircleGraph}
+        <circle cx={cx} cy={cy} r={radius / 3} fill="white" />
       </svg>
       <S.DescWrapper>{renderingItems}</S.DescWrapper>
     </S.GraphWrapper>

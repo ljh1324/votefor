@@ -7,6 +7,7 @@ const ItemWrapper = styled.li`
   font-size: 1.5rem;
   border: ${props => (props.voted ? "5px solid #16a085" : "2px solid gray")};
   border-radius: 10px;
+  box-sizing: border-box;
   cursor: pointer;
   user-select: none;
   &:active {

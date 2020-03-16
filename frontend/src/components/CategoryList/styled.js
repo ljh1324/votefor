@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const ListWrapper = styled.ul`
-  width: 80vw;
+  width: 90%;
   text-align: center;
   list-style-type: none;
   max-width: 400px;

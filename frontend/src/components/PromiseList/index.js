@@ -4,9 +4,9 @@ import ElectionPromise from "../ElectionPromise";
 
 const PromiseList = ({ promises, setPromises }) => {
   const renderingCategories = promises.map(({ summary, contents, voted }, idx) => {
-    const handleClickPromise = () => {
+    const setPromiseVotedState = voted => {
       let newPromises = [...promises];
-      newPromises[idx].voted = !newPromises[idx].voted;
+      newPromises[idx].voted = voted;
       setPromises(newPromises);
     };
 
@@ -16,7 +16,7 @@ const PromiseList = ({ promises, setPromises }) => {
         summary={summary}
         contents={contents}
         voted={voted}
-        handleClickPromise={handleClickPromise}
+        setPromiseVotedState={setPromiseVotedState}
       />
     );
   });

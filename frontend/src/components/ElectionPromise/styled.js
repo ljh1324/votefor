@@ -6,11 +6,18 @@ const ItemWrapper = styled.li`
   margin: 15px 0;
   cursor: pointer;
   user-select: none;
-  color: ${props => (props.voted ? "black" : "gray")};
+  color: ${props => (props.isClicked ? "black" : "gray")};
+`;
 
-  &:hover {
-    color: black;
-  }
+const ContentsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const LineWrapper = styled.p`
+  font-size: 1.3rem;
+  margin: 10px 0;
 `;
 
 const SummaryWrapper = styled.div`
@@ -22,4 +29,23 @@ const SVGWrapper = styled.div`
   margin-left: ${props => props.marginLeft};
 `;
 
-export { ItemWrapper, SummaryWrapper, SVGWrapper };
+const MarkWrapper = styled.div`
+  padding: 5px;
+  margin-right: 5px;
+`;
+
+const ThumbsWrapper = styled.div`
+  display: flex;
+  widh: 100%;
+  justify-content: center;
+`;
+
+export {
+  ItemWrapper,
+  ContentsWrapper,
+  SummaryWrapper,
+  LineWrapper,
+  SVGWrapper,
+  ThumbsWrapper,
+  MarkWrapper
+};

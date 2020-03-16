@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import * as S from "./styled";
-import ElectionMark from "../ElectionMark";
-import OMark from "../OMark";
-import XMark from "../XMark";
+import ElectionMark from "../marks/ElectionMark";
+import OMark from "../marks/OMark";
+import XMark from "../marks/XMark";
 
 const ElectionPromise = ({ summary, contents, voted, setPromiseVotedState }) => {
   const [isClicked, setState] = useState(false);

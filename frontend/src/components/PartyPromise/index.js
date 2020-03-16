@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./styled";
-import ElectionMark from "../ElectionMark";
+import ElectionMark from "../marks/ElectionMark";
 
 const ElectionPromise = ({ summary, contents }) => {
   return (

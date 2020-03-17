@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static('public'));
-app.use('/', v1);
+app.use('/v1', v1);
 
 app.use((req, res, next) => {
   return res.status(status.NOT_FOUND).json({});

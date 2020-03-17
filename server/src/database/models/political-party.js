@@ -15,6 +15,10 @@ const model = (sequelize, DataTypes) => {
       image: {
         type: DataTypes.TEXT,
         allowNull: false
+      },
+      color: {
+        type: DataTypes.STRING(7),
+        allowNull: false
       }
     },
     {

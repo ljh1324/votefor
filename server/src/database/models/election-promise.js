@@ -16,11 +16,11 @@ const model = (sequelize, DataTypes) => {
         allowNull: false
       },
       summary: {
-        type: DataTypes.STRING(40),
+        type: DataTypes.STRING(70),
         allowNull: false
       },
       contents: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.TEXT,
         allowNull: false
       }
     },

@@ -18,12 +18,12 @@ const Result = ({ name, parties, total, finish }) => {
     );
   }
 
-  const renderingParties = parties.map(({ name, promises, color }) => (
+  const renderingParties = parties.map(({ promises, color, image }) => (
     <>
       <S.PartyWrapper>
-        <S.Text fontSize="1.3rem">{name}</S.Text>
-        <S.Line width={`${(promises.length / total) * 70}%`} color={color} height={"30px"} />
-        <S.Text fontSize="1rem">{`${Math.round((promises.length / total) * 1000) / 10}% (${
+        <Image src={`/${image}`} width="80px" />
+        <S.Line width={`${(promises.length / total) * 65}%`} color={color} height={"30px"} />
+        <S.Text fontSize="0.9rem">{`${Math.round((promises.length / total) * 1000) / 10}% (${
           promises.length
         }표)`}</S.Text>
       </S.PartyWrapper>

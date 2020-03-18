@@ -75,7 +75,7 @@ const VotingResult = () => {
   };
 
   return (
-    <GS.FlexWrapWithHorizontalCentering>
+    <GS.FlexWrapWithHorizontalCentering width="90%">
       <TitleWithLogo />
       <ResultList votingResultList={votingResultList} />
       <Button

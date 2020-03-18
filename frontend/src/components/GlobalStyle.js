@@ -9,8 +9,8 @@ const FlexWrap = styled.div`
 `;
 
 const FlexWrapWithHorizontalCentering = styled.div`
-  height: 100vh;
   width: ${props => props.width};
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;

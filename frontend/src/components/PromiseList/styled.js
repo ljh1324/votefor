@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const ListWrapper = styled.ul`
-  width: 80vw;
+  width: 90%;
   max-width: 600px;
   padding: 0;
   display: flex;

@@ -4,11 +4,12 @@ const ListWrapper = styled.div`
   width: 90%;
   text-align: center;
   list-style-type: none;
-  max-width: 600px;
+  max-width: 800px;
   padding: 0;
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin: 50px 0;
 `;
 
 export { ListWrapper };

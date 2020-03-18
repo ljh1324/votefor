@@ -12,7 +12,7 @@ const GraphWrapper = styled.div`
 `;
 
 const DescWrapper = styled.div`
-  width: 30%;
+  width: 40%;
   display: flex;
   flex-direction: column;
 `;

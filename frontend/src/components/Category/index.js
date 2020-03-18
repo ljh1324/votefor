@@ -8,7 +8,7 @@ const Category = ({ name, voted }) => {
   return (
     <Link
       to={`/voting/${slashToUnderline(name)}`}
-      style={{ textDecoration: "none", width: "100%", margin: "20px" }}
+      style={{ textDecoration: "none", width: "300px", margin: "20px" }}
     >
       <S.ItemWrapper voted={voted}>
         <S.Text>{name}</S.Text>

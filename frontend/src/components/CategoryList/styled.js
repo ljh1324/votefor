@@ -1,14 +1,16 @@
 import styled from "styled-components";
 
-const ListWrapper = styled.ul`
-  width: 90%;
+const ListWrapper = styled.div`
   text-align: center;
-  list-style-type: none;
-  max-width: 400px;
   padding: 0;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 350px 350px 350px;
+  @media (max-width: 1100px) {
+    grid-template-columns: 350px 350px;
+  }
+  @media (max-width: 800px) {
+    grid-template-columns: 350px;
+  }
 `;
 
 export { ListWrapper };

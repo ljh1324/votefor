@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const ItemWrapper = styled.li`
-  width: 100%;
+const ItemWrapper = styled.div`
+  width: 300px;
   text-align: center;
   padding: 10px 0;
   font-size: 1.5rem;

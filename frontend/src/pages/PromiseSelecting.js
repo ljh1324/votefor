@@ -11,7 +11,7 @@ import PromiseList from "../components/PromiseList";
 import Button from "../components/Button";
 
 import { objectToList } from "../utils/convert";
-import { filterOnlyVotedItem } from "../utils/filter";
+import { filterOnlyVotedItem, filterOnlySelectedPartiesCategory } from "../utils/filter";
 
 const PromiseSelecting = ({ match }) => {
   const history = useHistory();
@@ -26,6 +26,7 @@ const PromiseSelecting = ({ match }) => {
   }
 
   categoryList = filterOnlyVotedItem(categoryList);
+  categoryList = filterOnlySelectedPartiesCategory(categoryList, parties);
   if (categoryList.length === 0) {
     return <Redirect to="/result" />;
   }

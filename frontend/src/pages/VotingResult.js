@@ -10,7 +10,7 @@ import ResultList from "../components/ResultList";
 import Button from "../components/Button";
 
 import { objectToList } from "../utils/convert";
-import { filterOnlyVotedItem } from "../utils/filter";
+import { filterOnlyVotedItem, filterOnlySelectedPartiesCategory } from "../utils/filter";
 
 const getAllPromises = votingResultList =>
   votingResultList.reduce((allPromises, { promises }) => allPromises.concat(promises), []);
@@ -34,11 +34,12 @@ const promisesDivideByParty = promises =>
     return promisesPerParty;
   }, {});
 
-const extractVotedPromisesAndDividedByParties = categories => {
+const extractVotedPromisesAndDividedByParties = (categories, parties) => {
   let votingResultList = objectToList(categories, "name");
   let allPromises;
 
   votingResultList = filterOnlyVotedItem(votingResultList);
+  votingResultList = filterOnlySelectedPartiesCategory(votingResultList, parties);
   allPromises = getAllPromises(votingResultList);
 
   votingResultList.push({
@@ -63,12 +64,12 @@ const extractVotedPromisesAndDividedByParties = categories => {
 
 const VotingResult = () => {
   const {
-    state: { categories, originalCategories, originalParties }
+    state: { categories, originalCategories, parties, originalParties }
   } = useContext(AppStateContext);
   const { dispatch } = useContext(AppDispatchContext);
   const history = useHistory();
 
-  const votingResultList = extractVotedPromisesAndDividedByParties(categories);
+  const votingResultList = extractVotedPromisesAndDividedByParties(categories, parties);
   const handleRedoBtnClick = () => {
     dispatch(handleCategoriesSet(originalCategories));
     dispatch(handlePartiesSet(originalParties));

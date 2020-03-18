@@ -11,7 +11,7 @@ import Button from "../components/Button";
 
 import { objectToList } from "../utils/convert";
 
-const SelectCategory = () => {
+const CategorySelecting = () => {
   const history = useHistory();
   const {
     state: { categories }
@@ -60,4 +60,4 @@ const SelectCategory = () => {
   );
 };
 
-export default SelectCategory;
+export default CategorySelecting;

@@ -31,19 +31,20 @@ const PromiseSelecting = ({ match }) => {
     return <Redirect to="/result" />;
   }
 
-  const { page } = match.params;
+  let { page } = match.params;
   const length = categoryList.length;
   const name = categoryList[page].name;
+  page = parseInt(page);
 
   const setPromises = promises => {
     dispatch(handlePromisesSet(name, promises));
   };
 
   const handleNextBtnClick = () => {
-    if (parseInt(page) + 1 === length) {
+    if (page + 1 === length) {
       history.push("/result");
     } else {
-      history.push(`/promise/${parseInt(page) + 1}`);
+      history.push(`/promise/${page + 1}`);
     }
   };
 
@@ -73,7 +74,7 @@ const PromiseSelecting = ({ match }) => {
           onClick={handlePreviousBtnClick}
         />
         <Button
-          text={page + 1 === length ? "제출" : "다음"}
+          text={page + 1 === length ? "투표" : "다음"}
           color={"#1abc9c"}
           activeColor={"#16a085"}
           width={"40%"}

@@ -41,7 +41,7 @@ const Result = ({ name, parties, total, finish }) => {
   return (
     <S.ResultWrapper>
       <S.CategoryText finish={finish}>{name}</S.CategoryText>
-      <CircleGraph nums={nums} items={items} total={total} width={250} padding={10} />
+      <CircleGraph nums={nums} items={items} total={total} width={200} padding={10} />
       <S.Line />
       {renderingParties}
     </S.ResultWrapper>

@@ -1,10 +1,10 @@
 import React from "react";
 import * as S from "./styled";
 
-const Title = () => {
+const Title = ({ text }) => {
   return (
     <S.TitleWrapper>
-      <S.AppName>당신의 정당은?</S.AppName>
+      <S.AppName>{text}</S.AppName>
     </S.TitleWrapper>
   );
 };

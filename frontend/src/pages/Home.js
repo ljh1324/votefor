@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 
 import { AppDispatchContext } from "../context";
-import { handleCategoriesSet } from "../context/reducer";
+import { handleCategoriesSet, handlePartiesSet } from "../context/reducer";
 
 import * as GS from "../components/GlobalStyle";
 import Header from "../components/Header";
@@ -16,7 +16,7 @@ const Home = () => {
   const { dispatch } = useContext(AppDispatchContext);
 
   const handleLinkBtnClick = () => {
-    history.push("/category");
+    history.push("/party");
   };
 
   useEffect(() => {
@@ -25,6 +25,7 @@ const Home = () => {
       .then(res => res.json())
       .then(res => {
         dispatch(handleCategoriesSet(res.categories));
+        dispatch(handlePartiesSet(res.parties));
       });
   }, [dispatch]);
 

@@ -6,7 +6,7 @@ import Title from "../Title";
 const Header = () => {
   return (
     <S.Header>
-      <Title />
+      <Title text="당신의 정당은?" />
     </S.Header>
   );
 };

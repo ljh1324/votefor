@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 
 import { AppStateContext, AppDispatchContext } from "../context";
-import { handleCategoriesSet } from "../context/reducer";
+import { handleCategoriesSet, handlePartiesSet } from "../context/reducer";
 
 import * as GS from "../components/GlobalStyle";
 import TitleWithLogo from "../components/TitleWithLogo";
@@ -63,7 +63,7 @@ const extractVotedPromisesAndDividedByParties = categories => {
 
 const VotingResult = () => {
   const {
-    state: { categories, originalCategories }
+    state: { categories, originalCategories, originalParties }
   } = useContext(AppStateContext);
   const { dispatch } = useContext(AppDispatchContext);
   const history = useHistory();
@@ -71,7 +71,8 @@ const VotingResult = () => {
   const votingResultList = extractVotedPromisesAndDividedByParties(categories);
   const handleRedoBtnClick = () => {
     dispatch(handleCategoriesSet(originalCategories));
-    history.push("/category");
+    dispatch(handlePartiesSet(originalParties));
+    history.push("/party");
   };
 
   return (

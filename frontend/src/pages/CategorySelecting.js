@@ -10,22 +10,29 @@ import CategoryList from "../components/CategoryList";
 import Button from "../components/Button";
 
 import { objectToList } from "../utils/convert";
+import { filterOnlySelectedPartiesCategory } from "../utils/filter";
 
 const CategorySelecting = () => {
   const history = useHistory();
   const {
-    state: { categories }
+    state: { categories, parties }
   } = useContext(AppStateContext);
 
-  const categoryList = objectToList(categories, "name");
+  let categoryList = objectToList(categories, "name");
   if (categoryList.length === 0) {
     history.push("/");
   }
 
-  const { dispatch } = useContext(AppDispatchContext);
-  const [count, setCount] = useState(0);
+  categoryList = filterOnlySelectedPartiesCategory(categoryList, parties);
 
-  const handleLinkBtnClick = () => {
+  const { dispatch } = useContext(AppDispatchContext);
+
+  const handleNextBtnClick = () => {
+    const count = categoryList.reduce((count, category) => {
+      count += category.voted ? 1 : 0;
+      return count;
+    }, 0);
+
     if (count !== 0) {
       history.push("/promise/0");
     } else {
@@ -33,29 +40,43 @@ const CategorySelecting = () => {
     }
   };
 
+  const handlePreviousBtnClick = () => {
+    history.goBack();
+  };
+
   const toggleCategoryVotedState = categoryName => () => {
     let category = categories[categoryName];
     category.voted = !category.voted;
-    if (category.voted) {
-      setCount(count + 1);
-    }
     dispatch(handleCategorySet(categoryName, category));
   };
 
   return (
     <GS.FlexWrapWithHorizontalCentering>
-      <TitleWithLogo />
+      <TitleWithLogo text="관심있는 분야 선택" />
       <CategoryList categories={categoryList} toggleCategoryVotedState={toggleCategoryVotedState} />
-      <Button
-        text={"다음"}
-        color={"#1abc9c"}
-        activeColor={"#16a085"}
-        width={"68vw"}
-        height={"70px"}
-        fontColor={"white"}
-        fontSize={"1.5rem"}
-        onClick={handleLinkBtnClick}
-      />
+      <GS.FlexRowDirWrap>
+        <Button
+          text={"이전"}
+          color={"white"}
+          activeColor={"#f1f2f6"}
+          width={"40%"}
+          height={"70px"}
+          fontColor={"black"}
+          fontSize={"1.5rem"}
+          border={"2px solid black"}
+          onClick={handlePreviousBtnClick}
+        />
+        <Button
+          text={"다음"}
+          color={"#1abc9c"}
+          activeColor={"#16a085"}
+          width={"40%"}
+          height={"70px"}
+          fontColor={"white"}
+          fontSize={"1.5rem"}
+          onClick={handleNextBtnClick}
+        />
+      </GS.FlexRowDirWrap>
     </GS.FlexWrapWithHorizontalCentering>
   );
 };

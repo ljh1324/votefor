@@ -16,7 +16,7 @@ import { filterOnlyVotedItem } from "../utils/filter";
 const PromiseSelecting = ({ match }) => {
   const history = useHistory();
   const {
-    state: { categories }
+    state: { categories, parties }
   } = useContext(AppStateContext);
   const { dispatch } = useContext(AppDispatchContext);
 
@@ -47,18 +47,18 @@ const PromiseSelecting = ({ match }) => {
   };
 
   const handlePreviousBtnClick = () => {
-    if (parseInt(page) === 0) {
-      history.push("/category");
-    } else {
-      history.push(`/promise/${parseInt(page) - 1}`);
-    }
+    history.goBack();
   };
 
   return (
     <GS.FlexWrapWithHorizontalCentering width="80%">
-      <TitleWithLogo />
+      <TitleWithLogo text="원하는 공약 선택" />
       <CategoryTitle name={name} />
-      <PromiseList promises={categories[name].promises} setPromises={setPromises} />
+      <PromiseList
+        promises={categories[name].promises}
+        setPromises={setPromises}
+        parties={parties}
+      />
       <GS.FlexRowDirWrap>
         <Button
           text={"이전"}

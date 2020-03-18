@@ -2,17 +2,24 @@ import React from "react";
 import * as S from "./styled";
 import ElectionPromise from "../ElectionPromise";
 
-const PromiseList = ({ promises, setPromises }) => {
-  const renderingCategories = promises.map(({ summary, contents, voted }, idx) => {
+const PromiseList = ({ promises, setPromises, parties }) => {
+  const renderingCategories = promises.map(({ summary, contents, voted, no, party }) => {
+    if (!parties[party.name].selected) {
+      return <></>;
+    }
+
     const setPromiseVotedState = voted => {
+      const idx = promises.findIndex(promise => promise.no === no);
+
       let newPromises = [...promises];
+
       newPromises[idx].voted = voted;
       setPromises(newPromises);
     };
 
     return (
       <ElectionPromise
-        key={idx}
+        key={no}
         summary={summary}
         contents={contents}
         voted={voted}

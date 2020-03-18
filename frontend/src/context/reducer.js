@@ -3,6 +3,8 @@ import { deepCopy } from "../utils/copy";
 const SET_CATEGORIES = "SET_CATEGORIES";
 const SET_CATEGORY = "SET_CATEGORY";
 const SET_PROMISES = "SET_PROMISES";
+const SET_PARTIES = "SET_PARTEIS";
+const SET_PARTY = "SET_PARTY";
 
 /**
  * categories: {
@@ -29,7 +31,9 @@ const SET_PROMISES = "SET_PROMISES";
  */
 export const initialState = {
   categories: {},
-  originalCategories: {}
+  originalCategories: {},
+  parties: {},
+  originalParties: {}
 };
 
 export const handleCategoriesSet = categories => {
@@ -65,12 +69,40 @@ export const handlePromisesSet = (category, promises) => {
   };
 };
 
+export const handlePartiesSet = parties => {
+  return {
+    type: SET_PARTIES,
+    payload: {
+      originalParties: deepCopy(parties),
+      parties
+    }
+  };
+};
+
+export const handlePartySet = (partyName, party) => {
+  return {
+    type: SET_PARTY,
+    payload: {
+      key: partyName,
+      party
+    }
+  };
+};
+
 export const reducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
     case SET_CATEGORIES:
       return { ...state, ...payload };
+    case SET_CATEGORY:
+      return {
+        ...state,
+        categories: {
+          ...state.categories,
+          [payload.key]: payload.category
+        }
+      };
     case SET_PROMISES:
       return {
         ...state,
@@ -79,12 +111,17 @@ export const reducer = (state = initialState, action) => {
           [payload.key]: payload.category
         }
       };
-    case SET_CATEGORY:
+    case SET_PARTIES:
       return {
         ...state,
-        categories: {
-          ...state.categories,
-          [payload.key]: payload.category
+        ...payload
+      };
+    case SET_PARTY:
+      return {
+        ...state,
+        parties: {
+          ...state.parties,
+          [payload.key]: payload.party
         }
       };
     default:

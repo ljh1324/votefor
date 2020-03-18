@@ -46,12 +46,31 @@ const PromiseSelecting = ({ match }) => {
     }
   };
 
+  const handlePreviousBtnClick = () => {
+    if (parseInt(page) === 0) {
+      history.push("/category");
+    } else {
+      history.push(`/promise/${parseInt(page) - 1}`);
+    }
+  };
+
   return (
     <GS.FlexWrapWithHorizontalCentering width="80%">
       <TitleWithLogo />
       <CategoryTitle name={name} />
       <PromiseList promises={categories[name].promises} setPromises={setPromises} />
       <GS.FlexRowDirWrap>
+        <Button
+          text={"이전"}
+          color={"white"}
+          activeColor={"#f1f2f6"}
+          width={"40%"}
+          height={"70px"}
+          fontColor={"black"}
+          fontSize={"1.5rem"}
+          border={"2px solid black"}
+          onClick={handlePreviousBtnClick}
+        />
         <Button
           text={page + 1 === length ? "제출" : "다음"}
           color={"#1abc9c"}

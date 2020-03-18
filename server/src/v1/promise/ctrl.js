@@ -7,7 +7,7 @@ const read = async (req, res, next) => {
     const parties = {};
 
     promises.forEach(promise => {
-      const { summary, contents } = promise;
+      const { summary, contents, no } = promise;
       const categoryName = promise['Category.name'];
       const partyName = promise['PoliticalParty.name'];
       let color;
@@ -19,7 +19,8 @@ const read = async (req, res, next) => {
         parties[partyName] = {
           name: partyName,
           color,
-          image
+          image,
+          selected: false
         };
       }
       if (!(categoryName in categories)) {
@@ -30,6 +31,7 @@ const read = async (req, res, next) => {
       }
 
       categories[categoryName].promises.push({
+        no,
         summary,
         contents,
         voted: false,
@@ -37,7 +39,7 @@ const read = async (req, res, next) => {
       });
     });
 
-    res.json({ categories });
+    res.json({ categories, parties });
   } catch (err) {
     next(err);
   }

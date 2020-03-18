@@ -1,19 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import * as S from "./styled";
 
-import { slashToUnderline } from "../../utils/convert";
-
-const Category = ({ name, voted }) => {
+const Category = ({ name, voted, toggleCategoryVotedState }) => {
   return (
-    <Link
-      to={`/voting/${slashToUnderline(name)}`}
-      style={{ textDecoration: "none", width: "300px", margin: "20px" }}
-    >
-      <S.ItemWrapper voted={voted}>
-        <S.Text>{name}</S.Text>
-      </S.ItemWrapper>
-    </Link>
+    <S.ItemWrapper voted={voted} onClick={toggleCategoryVotedState}>
+      <S.Text>{name}</S.Text>
+    </S.ItemWrapper>
   );
 };
 

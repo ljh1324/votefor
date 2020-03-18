@@ -2,7 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 
 import { AppProvider } from "./context";
-import { Home, Voting, VotingResult, PromiseSelecting } from "./pages";
+import { Home, SelectCategory, VotingResult, PromiseSelecting, NotFound } from "./pages";
 import "./App.css";
 
 function App() {
@@ -10,9 +10,10 @@ function App() {
     <div className="App">
       <AppProvider>
         <Route exact path="/" component={Home} />
-        <Route exact path="/voting" component={Voting} />
-        <Route exact path="/voting/:category" component={PromiseSelecting} />
+        <Route exact path="/category" component={SelectCategory} />
+        <Route exact path="/promise/:page" component={PromiseSelecting} />
         <Route exact path="/result" component={VotingResult} />
+        <Route exact path="*" component={NotFound} />
       </AppProvider>
     </div>
   );

@@ -1,4 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
+import { Redirect, useHistory } from "react-router-dom";
 
 import { AppStateContext, AppDispatchContext } from "../context";
 import { handlePromisesSet } from "../context/reducer";
@@ -9,59 +10,59 @@ import CategoryTitle from "../components/CategoryTitle";
 import PromiseList from "../components/PromiseList";
 import Button from "../components/Button";
 
-import { deepCopy } from "../utils/copy";
+import { objectToList } from "../utils/convert";
+import { filterOnlyVotedItem } from "../utils/filter";
 
-const PromiseSelecting = ({ match, history }) => {
+const PromiseSelecting = ({ match }) => {
+  const history = useHistory();
   const {
     state: { categories }
   } = useContext(AppStateContext);
-
   const { dispatch } = useContext(AppDispatchContext);
 
-  const { category } = match.params;
-  const categoriesClone = deepCopy(categories[category].promises);
-  const [promises, setPromises] = useState(categoriesClone);
+  let categoryList = objectToList(categories, "name");
+  if (categoryList.length === 0) {
+    return <Redirect to="/" />;
+  }
 
-  const handleCancleBtnClick = () => {
-    setPromises(categoriesClone);
-    history.goBack();
+  categoryList = filterOnlyVotedItem(categoryList);
+  if (categoryList.length === 0) {
+    return <Redirect to="/result" />;
+  }
+
+  const { page } = match.params;
+  const length = categoryList.length;
+  const name = categoryList[page].name;
+
+  const setPromises = promises => {
+    dispatch(handlePromisesSet(name, promises));
   };
 
-  const handleConfirmBtnClick = () => {
-    dispatch(handlePromisesSet(category, promises));
-    history.goBack();
+  const handleNextBtnClick = () => {
+    if (parseInt(page) + 1 === length) {
+      history.push("/result");
+    } else {
+      history.push(`/promise/${parseInt(page) + 1}`);
+    }
   };
 
   return (
-    <GS.FlexWrapWithHorizontalCentering>
-      <GS.FlexWrapWithHorizontalCentering width="80%">
-        <TitleWithLogo />
-        <CategoryTitle name={category} />
-        <PromiseList promises={promises} setPromises={setPromises} />
-        <GS.FlexRowDirWrap>
-          <Button
-            text={"확인"}
-            color={"#1abc9c"}
-            activeColor={"#16a085"}
-            width={"40%"}
-            height={"70px"}
-            fontColor={"white"}
-            fontSize={"1.5rem"}
-            onClick={handleConfirmBtnClick}
-          />
-          <Button
-            text={"취소"}
-            color={"white"}
-            activeColor={"#f1f2f6"}
-            width={"40%"}
-            height={"70px"}
-            fontColor={"black"}
-            fontSize={"1.5rem"}
-            border={"2px solid black"}
-            onClick={handleCancleBtnClick}
-          />
-        </GS.FlexRowDirWrap>
-      </GS.FlexWrapWithHorizontalCentering>
+    <GS.FlexWrapWithHorizontalCentering width="80%">
+      <TitleWithLogo />
+      <CategoryTitle name={name} />
+      <PromiseList promises={categories[name].promises} setPromises={setPromises} />
+      <GS.FlexRowDirWrap>
+        <Button
+          text={page + 1 === length ? "제출" : "다음"}
+          color={"#1abc9c"}
+          activeColor={"#16a085"}
+          width={"40%"}
+          height={"70px"}
+          fontColor={"white"}
+          fontSize={"1.5rem"}
+          onClick={handleNextBtnClick}
+        />
+      </GS.FlexRowDirWrap>
     </GS.FlexWrapWithHorizontalCentering>
   );
 };

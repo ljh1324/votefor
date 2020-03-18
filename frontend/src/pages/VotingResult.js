@@ -1,14 +1,16 @@
 import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
 
-import { AppStateContext } from "../context";
+import { AppStateContext, AppDispatchContext } from "../context";
+import { handleCategoriesSet } from "../context/reducer";
 
 import * as GS from "../components/GlobalStyle";
 import TitleWithLogo from "../components/TitleWithLogo";
 import ResultList from "../components/ResultList";
+import Button from "../components/Button";
 
 import { objectToList } from "../utils/convert";
-
-const filterOnlyVotedItem = items => items.filter(item => item.voted);
+import { filterOnlyVotedItem } from "../utils/filter";
 
 const getAllPromises = votingResultList =>
   votingResultList.reduce((allPromises, { promises }) => allPromises.concat(promises), []);
@@ -32,10 +34,7 @@ const promisesDivideByParty = promises =>
     return promisesPerParty;
   }, {});
 
-const VotingResult = () => {
-  const {
-    state: { categories }
-  } = useContext(AppStateContext);
+const extractVotedPromisesAndDividedByParties = categories => {
   let votingResultList = objectToList(categories, "name");
   let allPromises;
 
@@ -59,10 +58,47 @@ const VotingResult = () => {
     });
   });
 
+  return votingResultList;
+};
+
+const VotingResult = () => {
+  const {
+    state: { categories, originalCategories }
+  } = useContext(AppStateContext);
+  const { dispatch } = useContext(AppDispatchContext);
+  const history = useHistory();
+
+  const votingResultList = extractVotedPromisesAndDividedByParties(categories);
+  const handleRedoBtnClick = () => {
+    dispatch(handleCategoriesSet(originalCategories));
+    history.push("/category");
+  };
+
   return (
-    <GS.FlexWrapWithHorizontalCentering width="100vw">
+    <GS.FlexWrapWithHorizontalCentering>
       <TitleWithLogo />
       <ResultList votingResultList={votingResultList} />
+      <Button
+        text="다시 하기"
+        color="#1abc9c"
+        activeColor="#16a085"
+        width="50%"
+        max
+        height="70px"
+        fontColor="white"
+        fontSize="1.5rem"
+        onClick={handleRedoBtnClick}
+      />
+      <Button
+        text="다른 사람들은?"
+        color="#1abc9c"
+        activeColor="#16a085"
+        width="50%"
+        height="70px"
+        fontColor="white"
+        fontSize="1.5rem"
+        onClick={handleRedoBtnClick}
+      />
     </GS.FlexWrapWithHorizontalCentering>
   );
 };

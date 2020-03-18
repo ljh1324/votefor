@@ -16,7 +16,7 @@ const Home = () => {
   const { dispatch } = useContext(AppDispatchContext);
 
   const handleLinkBtnClick = () => {
-    history.push("/voting");
+    history.push("/category");
   };
 
   useEffect(() => {

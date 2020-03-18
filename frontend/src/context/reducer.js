@@ -1,6 +1,7 @@
 import { deepCopy } from "../utils/copy";
 
 const SET_CATEGORIES = "SET_CATEGORIES";
+const SET_CATEGORY = "SET_CATEGORY";
 const SET_PROMISES = "SET_PROMISES";
 
 /**
@@ -41,6 +42,16 @@ export const handleCategoriesSet = categories => {
   };
 };
 
+export const handleCategorySet = (categoryName, category) => {
+  return {
+    type: SET_CATEGORY,
+    payload: {
+      key: categoryName,
+      category
+    }
+  };
+};
+
 export const handlePromisesSet = (category, promises) => {
   return {
     type: SET_PROMISES,
@@ -61,6 +72,14 @@ export const reducer = (state = initialState, action) => {
     case SET_CATEGORIES:
       return { ...state, ...payload };
     case SET_PROMISES:
+      return {
+        ...state,
+        categories: {
+          ...state.categories,
+          [payload.key]: payload.category
+        }
+      };
+    case SET_CATEGORY:
       return {
         ...state,
         categories: {

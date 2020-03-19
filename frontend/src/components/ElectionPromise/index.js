@@ -8,7 +8,17 @@ const ElectionPromise = ({ summary, contents, voted, setPromiseVotedState }) => 
   const [isClicked, setState] = useState(false);
   const lines = contents.split("\n");
 
-  const handlePromiseClick = () => {
+  const handlePromiseClick = e => {
+    if (!isClicked) {
+      const offsetTop = e.target.offsetTop;
+
+      setTimeout(() => {
+        window.scroll({
+          top: offsetTop,
+          behavior: "smooth"
+        });
+      }, 100);
+    }
     setState(!isClicked);
   };
 
@@ -34,7 +44,7 @@ const ElectionPromise = ({ summary, contents, voted, setPromiseVotedState }) => 
           </S.SVGWrapper>
         ) : null}
       </S.ItemWrapper>
-      <S.ContentsWrapper>
+      <S.ContentsWrapper isClicked={isClicked}>
         {isClicked ? renderingLines : null}
         {isClicked ? (
           <S.ThumbsWrapper>

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const ItemWrapper = styled.li`
   width: 100%;
@@ -13,6 +13,11 @@ const ContentsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  background: #fff;
+
+  transition: all 0.9s ease;
+  max-height: ${props => (props.isClicked ? "1000px" : "0px")};
+  opacity: ${props => (props.isClicked ? "1" : "0")};
 `;
 
 const LineWrapper = styled.p`

@@ -9,7 +9,6 @@ const ListWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 50px 0;
 `;
 
 export { ListWrapper };

@@ -29,6 +29,11 @@ const CategoryText = styled.div`
   box-sizing: border-box;
   width: 100%;
   color: black;
+  font-size: 2rem;
+
+  @media only screen and (max-width: 464px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const Text = styled.span`

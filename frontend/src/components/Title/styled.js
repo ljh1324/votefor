@@ -10,6 +10,9 @@ const TitleWrapper = styled.div`
 const AppName = styled.span`
   font-size: 2rem;
   vertical-align: middle;
+  @media only screen and (max-width: 464px) {
+    font-size: 1.7rem;
+  }
 `;
 
 export { TitleWrapper, AppName };

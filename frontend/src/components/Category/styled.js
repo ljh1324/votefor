@@ -16,6 +16,10 @@ const ItemWrapper = styled.div`
     border: ${props => (props.voted ? "5px solid #16a085" : "2px solid black")};
     background: ${props => (props.voted ? "white" : "#f1f2f6")};
   }
+
+  @media only screen and (max-width: 464px) {
+    font-size: 1.4rem;
+  }
 `;
 
 const Text = styled.div`

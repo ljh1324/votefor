@@ -84,7 +84,7 @@ const VotingResult = () => {
     <GS.FlexWrapWithHorizontalCentering width="90%">
       <TitleWithLogo text="투표 결과" />
       <ResultList votingResultList={votingResultList} />
-      <GS.FlexRowDirWrap>
+      <GS.FlexRowDirWrapDependOnScreenSize>
         <Button
           text="다시 하기"
           color="#1abc9c"
@@ -106,7 +106,7 @@ const VotingResult = () => {
           fontSize="1.5rem"
           onClick={handleRedoBtnClick}
         />
-      </GS.FlexRowDirWrap>
+      </GS.FlexRowDirWrapDependOnScreenSize>
     </GS.FlexWrapWithHorizontalCentering>
   );
 };

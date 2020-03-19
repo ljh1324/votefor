@@ -17,6 +17,10 @@ const Button = styled.div`
   &:active {
     background: ${props => props.activeColor};
   }
+
+  @media only screen and (max-width: 464px) {
+    font-size: 1.3rem;
+  }
 `;
 
 export { Button };

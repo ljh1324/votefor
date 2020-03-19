@@ -23,4 +23,20 @@ const FlexRowDirWrap = styled.div`
   align-items: center;
 `;
 
-export { FlexWrap, FlexWrapWithHorizontalCentering, FlexRowDirWrap };
+const FlexRowDirWrapDependOnScreenSize = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  @media only screen and (max-width: 464px) {
+    flex-direction: column;
+  }
+`;
+
+export {
+  FlexWrap,
+  FlexWrapWithHorizontalCentering,
+  FlexRowDirWrap,
+  FlexRowDirWrapDependOnScreenSize
+};

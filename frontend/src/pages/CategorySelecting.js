@@ -59,7 +59,7 @@ const CategorySelecting = () => {
           text={"이전"}
           color={"white"}
           activeColor={"#f1f2f6"}
-          width={"40%"}
+          width={"35%"}
           height={"70px"}
           fontColor={"black"}
           fontSize={"1.5rem"}
@@ -70,7 +70,7 @@ const CategorySelecting = () => {
           text={"다음"}
           color={"#1abc9c"}
           activeColor={"#16a085"}
-          width={"40%"}
+          width={"35%"}
           height={"70px"}
           fontColor={"white"}
           fontSize={"1.5rem"}

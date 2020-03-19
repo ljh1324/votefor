@@ -10,7 +10,11 @@ import ResultList from "../components/ResultList";
 import Button from "../components/Button";
 
 import { objectToList } from "../utils/convert";
-import { filterOnlyVotedItem, filterOnlySelectedPartiesCategory } from "../utils/filter";
+import {
+  filterOnlyVotedItem,
+  filterOnlyVotedStateItem,
+  filterOnlySelectedPartiesCategory
+} from "../utils/filter";
 
 const getAllPromises = votingResultList =>
   votingResultList.reduce((allPromises, { promises }) => allPromises.concat(promises), []);
@@ -49,7 +53,7 @@ const extractVotedPromisesAndDividedByParties = (categories, parties) => {
   });
 
   votingResultList.forEach(votingResult => {
-    const promises = filterOnlyVotedItem(votingResult.promises);
+    const promises = filterOnlyVotedStateItem(votingResult.promises);
     const parties = promisesDivideByParty(promises);
 
     votingResult.total = promises.length;

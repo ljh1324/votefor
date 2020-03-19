@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as S from "./styled";
-import ElectionMark from "../marks/ElectionMark";
+import { ACCEPT, REJECT } from "../../utils/voted-state";
 import OMark from "../marks/OMark";
 import XMark from "../marks/XMark";
 
@@ -24,12 +24,12 @@ const ElectionPromise = ({ summary, contents, voted, setPromiseVotedState }) => 
 
   const handleOMarkClick = () => {
     setState(!isClicked);
-    setPromiseVotedState(true);
+    setPromiseVotedState(ACCEPT);
   };
 
   const handleXMarkClick = () => {
     setState(!isClicked);
-    setPromiseVotedState(false);
+    setPromiseVotedState(REJECT);
   };
 
   const renderingLines = lines.map(line => <S.LineWrapper>- {line}</S.LineWrapper>);
@@ -38,9 +38,14 @@ const ElectionPromise = ({ summary, contents, voted, setPromiseVotedState }) => 
     <>
       <S.ItemWrapper isClicked={isClicked || voted} onClick={handlePromiseClick}>
         {summary}
-        {voted ? (
+        {voted === 1 ? (
           <S.SVGWrapper marginLeft={"5px"}>
-            <ElectionMark size={17} strokeWidth={2} />
+            <OMark size={12} strokeWidth={3} />
+          </S.SVGWrapper>
+        ) : null}
+        {voted === 2 ? (
+          <S.SVGWrapper marginLeft={"5px"}>
+            <XMark size={12} strokeWidth={3} />
           </S.SVGWrapper>
         ) : null}
       </S.ItemWrapper>

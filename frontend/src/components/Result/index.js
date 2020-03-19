@@ -5,6 +5,8 @@ import PartyPromiseList from "../PartyPromiseList";
 import CircleGraph from "../CircleGraph";
 import Image from "../Image";
 
+import { getGraphSize } from "../../utils/sizing";
+
 const Result = ({ name, parties, total, finish }) => {
   if (total === 0) {
     return (
@@ -41,7 +43,7 @@ const Result = ({ name, parties, total, finish }) => {
   return (
     <S.ResultWrapper>
       <S.CategoryText finish={finish}>{name}</S.CategoryText>
-      <CircleGraph nums={nums} items={items} total={total} width={200} padding={10} />
+      <CircleGraph nums={nums} items={items} total={total} width={getGraphSize()} padding={10} />
       <S.Line />
       {renderingParties}
     </S.ResultWrapper>

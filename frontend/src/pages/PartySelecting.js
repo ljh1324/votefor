@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 
 import { AppStateContext, AppDispatchContext } from "../context";
@@ -45,7 +45,7 @@ const PartySelecting = () => {
 
   return (
     <GS.FlexWrapWithHorizontalCentering>
-      <TitleWithLogo text="관심있는 정당 선택" />
+      <TitleWithLogo text="관심 정당 선택" />
       <PartyList parties={partyList} togglePartySelectedState={togglePartySelectedState} />
       <Button
         text={"다음"}

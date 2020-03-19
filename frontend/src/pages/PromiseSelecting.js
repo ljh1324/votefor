@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 
 import { AppStateContext, AppDispatchContext } from "../context";
@@ -19,6 +19,13 @@ const PromiseSelecting = ({ match }) => {
     state: { categories, parties }
   } = useContext(AppStateContext);
   const { dispatch } = useContext(AppDispatchContext);
+
+  useEffect(() => {
+    window.scroll({
+      top: 0,
+      behavior: "smooth"
+    });
+  }, []);
 
   let categoryList = objectToList(categories, "name");
   if (categoryList.length === 0) {
@@ -41,6 +48,11 @@ const PromiseSelecting = ({ match }) => {
   };
 
   const handleNextBtnClick = () => {
+    window.scroll({
+      top: 0,
+      behavior: "smooth"
+    });
+
     if (page + 1 === length) {
       history.push("/result");
     } else {
@@ -54,7 +66,7 @@ const PromiseSelecting = ({ match }) => {
 
   return (
     <GS.FlexWrapWithHorizontalCentering width="80%">
-      <TitleWithLogo text="원하는 공약 선택" />
+      <TitleWithLogo text="관심 공약 선택" />
       <CategoryTitle name={name} />
       <PromiseList
         promises={categories[name].promises}

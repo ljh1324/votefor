@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import { AppStateContext, AppDispatchContext } from "../context";
@@ -17,6 +17,12 @@ const CategorySelecting = () => {
   const {
     state: { categories, parties }
   } = useContext(AppStateContext);
+
+  useEffect(() => {
+    window.scroll({
+      top: 0
+    });
+  }, []);
 
   let categoryList = objectToList(categories, "name");
   if (categoryList.length === 0) {
@@ -52,7 +58,7 @@ const CategorySelecting = () => {
 
   return (
     <GS.FlexWrapWithHorizontalCentering>
-      <TitleWithLogo text="관심있는 분야 선택" />
+      <TitleWithLogo text="관심 분야 선택" />
       <CategoryList categories={categoryList} toggleCategoryVotedState={toggleCategoryVotedState} />
       <GS.FlexRowDirWrap>
         <Button

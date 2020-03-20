@@ -50,17 +50,25 @@ const read = async (req, res, next) => {
 
 const write = async (req, res, next) => {
   try {
-    const { gender, age, vote } = req.body;
-    if (!validator.gender(gender) || !validator.age(parseInt(age, 10))) {
+    const { vote } = req.body;
+    let { gender, age, area } = req.body;
+
+    gender = parseInt(gender, 10);
+    age = parseInt(age, 10);
+    area = parseInt(area, 10);
+
+    if (!validator.gender(gender) || !validator.age(age) || !validator.area(area)) {
       res.status(status.CONFLICT).json({});
     } else {
       const cnt = await db.ElectionPromise.count({});
+
       if (validator.range(vote, 1, cnt) && !validator.unique(vote)) {
         res.status(status.CONFLICT).json({});
       } else {
         db.Vote.create({
           age,
           gender,
+          area,
           vote: vote.join(',')
         });
         res.status(status.CREATED).json({});

@@ -8,7 +8,12 @@ const model = (sequelize, DataTypes) => {
         autoIncrement: true
       },
       gender: {
-        type: DataTypes.STRING(1),
+        // 1: 남, 2: 여
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      area: {
+        type: DataTypes.INTEGER,
         allowNull: false
       },
       age: {

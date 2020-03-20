@@ -1,3 +1,5 @@
+import { areaList } from '../config/area';
+
 const isNumber = num => {
   if (Number.isInteger(parseInt(num, 10))) {
     return true;
@@ -10,7 +12,7 @@ const age = a => {
     return false;
   }
 
-  if (a < 10 || a > 130 || a % 10 !== 0) {
+  if (a < 10 || a > 80 || a % 10 !== 0) {
     return false;
   }
 
@@ -38,12 +40,25 @@ const unique = nums => {
   return flag;
 };
 
-const gender = char => {
-  return char === 'M' || char === 'W';
+const gender = num => {
+  if (!isNumber(num)) {
+    return false;
+  }
+
+  return num === 1 || num === 2;
+};
+
+const area = num => {
+  if (!isNumber(num)) {
+    return false;
+  }
+
+  return -1 <= num && num < areaList.length;
 };
 
 export default {
   age,
+  area,
   range,
   gender,
   unique

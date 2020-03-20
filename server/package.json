@@ -10,7 +10,8 @@
     "start": "export NODE_ENV=production || set \"NODE_ENV=production\" && node build/bin/www.js",
     "seed:dev": "export NODE_ENV=development || set \"NODE_ENV=development\" && babel-node seed/create-seed-data.js",
     "seed:prod": "export NODE_ENV=production || set \"NODE_ENV=production\" && babel-node seed/create-seed-data.js",
-    "seed:force-prod": "export force=true || SET \"force=true\" && npm run seed:prod"
+    "seed:force-prod": "export force=true || SET \"force=true\" && npm run seed:prod",
+    "create:ranking": "export NODE_ENV=development || set \"NODE_ENV=development\" && babel-node batch/create-ranking.js"
   },
   "author": "hwanlee",
   "license": "ISC",

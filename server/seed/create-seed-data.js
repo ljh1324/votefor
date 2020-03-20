@@ -6,6 +6,8 @@ import db from '../src/database';
 
 const contents = fs.readFileSync(path.join(__dirname, 'seed-data.json'));
 const { categories, parties, promises } = JSON.parse(contents);
+const { force } = process.env;
+
 /**
  * categories: [
  *  {
@@ -69,7 +71,7 @@ const createPromisesData = async () => {
 };
 
 const createSeedData = async () => {
-  await db.sequelize.sync();
+  await db.sequelize.sync({ force });
 
   await createCategoriesData();
   await createPartiesData();

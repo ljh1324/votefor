@@ -8,6 +8,7 @@ import * as GS from "../components/GlobalStyle";
 import TitleWithLogo from "../components/TitleWithLogo";
 import CategoryTitle from "../components/CategoryTitle";
 import PromiseList from "../components/PromiseList";
+import Message from "../components/Message";
 import { GreenButton, BackButton } from "../components/buttons";
 
 import { objectToList } from "../utils/convert";
@@ -63,6 +64,12 @@ const PromiseSelecting = ({ match }) => {
   return (
     <GS.FlexWrapWithHorizontalCentering width="80%">
       <TitleWithLogo text="관심 공약 선택" />
+      {page === 0 ? (
+        <>
+          <Message text="관심 공약을 선택 후" />
+          <Message text="찬성하면 'O' 반대하면 'X'를 눌러주세요!" />
+        </>
+      ) : null}
       <CategoryTitle name={name} />
       <PromiseList
         promises={categories[name].promises}

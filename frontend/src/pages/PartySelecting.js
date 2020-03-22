@@ -7,6 +7,7 @@ import { handlePartySet } from "../context/reducer";
 import * as GS from "../components/GlobalStyle";
 import TitleWithLogo from "../components/TitleWithLogo";
 import PartyList from "../components/PartyList";
+import Message from "../components/Message";
 import { GreenButton } from "../components/buttons";
 
 import { objectToList } from "../utils/convert";
@@ -46,6 +47,7 @@ const PartySelecting = () => {
   return (
     <GS.FlexWrapWithHorizontalCentering>
       <TitleWithLogo text="관심 정당 선택" />
+      <Message text="관심 정당을 선택 후 다음 버튼을 눌러주세요!" />
       <PartyList parties={partyList} togglePartySelectedState={togglePartySelectedState} />
       <GreenButton
         text="다음"

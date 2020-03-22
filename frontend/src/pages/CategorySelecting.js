@@ -7,6 +7,7 @@ import { handleCategorySet } from "../context/reducer";
 import * as GS from "../components/GlobalStyle";
 import TitleWithLogo from "../components/TitleWithLogo";
 import CategoryList from "../components/CategoryList";
+import Message from "../components/Message";
 import { GreenButton, BackButton } from "../components/buttons";
 
 import { objectToList } from "../utils/convert";
@@ -55,6 +56,7 @@ const CategorySelecting = () => {
   return (
     <GS.FlexWrapWithHorizontalCentering>
       <TitleWithLogo text="관심 분야 선택" />
+      <Message text="관심 분야를 선택 후 다음 버튼을 눌러주세요!" />
       <CategoryList categories={categoryList} toggleCategoryVotedState={toggleCategoryVotedState} />
       <GS.FlexRowDirWrap>
         <BackButton width="35%" height="70px" fontSize="1.5rem" />

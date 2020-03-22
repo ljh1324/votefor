@@ -7,7 +7,7 @@ import { handleCategoriesSet, handlePartiesSet } from "../context/reducer";
 import * as GS from "../components/GlobalStyle";
 import TitleWithLogo from "../components/TitleWithLogo";
 import ResultList from "../components/ResultList";
-import Button from "../components/Button";
+import { GreenButton } from "../components/buttons";
 
 import { objectToList } from "../utils/convert";
 import {
@@ -85,24 +85,17 @@ const VotingResult = () => {
       <TitleWithLogo text="투표 결과" />
       <ResultList votingResultList={votingResultList} />
       <GS.FlexRowDirWrapDependOnScreenSize>
-        <Button
+        <GreenButton
           text="다시 하기"
-          color="#1abc9c"
-          activeColor="#16a085"
           width="50%"
-          max
           height="70px"
-          fontColor="white"
           fontSize="1.5rem"
           onClick={handleRedoBtnClick}
         />
-        <Button
+        <GreenButton
           text="다른 사람들은?"
-          color="#1abc9c"
-          activeColor="#16a085"
           width="50%"
           height="70px"
-          fontColor="white"
           fontSize="1.5rem"
           onClick={handleRedoBtnClick}
         />

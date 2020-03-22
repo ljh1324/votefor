@@ -8,7 +8,7 @@ import * as GS from "../components/GlobalStyle";
 import TitleWithLogo from "../components/TitleWithLogo";
 import CategoryTitle from "../components/CategoryTitle";
 import PromiseList from "../components/PromiseList";
-import Button from "../components/Button";
+import { GreenButton, BackButton } from "../components/buttons";
 
 import { objectToList } from "../utils/convert";
 import { filterOnlyVotedItem, filterOnlySelectedPartiesCategory } from "../utils/filter";
@@ -60,10 +60,6 @@ const PromiseSelecting = ({ match }) => {
     }
   };
 
-  const handlePreviousBtnClick = () => {
-    history.goBack();
-  };
-
   return (
     <GS.FlexWrapWithHorizontalCentering width="80%">
       <TitleWithLogo text="관심 공약 선택" />
@@ -74,25 +70,12 @@ const PromiseSelecting = ({ match }) => {
         parties={parties}
       />
       <GS.FlexRowDirWrap>
-        <Button
-          text={"이전"}
-          color={"white"}
-          activeColor={"#f1f2f6"}
-          width={"40%"}
-          height={"70px"}
-          fontColor={"black"}
-          fontSize={"1.5rem"}
-          border={"2px solid black"}
-          onClick={handlePreviousBtnClick}
-        />
-        <Button
+        <BackButton text={"이전"} width="40%" height="70px" fontSize="1.5rem" />
+        <GreenButton
           text={page + 1 === length ? "투표" : "다음"}
-          color={"#1abc9c"}
-          activeColor={"#16a085"}
-          width={"40%"}
-          height={"70px"}
-          fontColor={"white"}
-          fontSize={"1.5rem"}
+          width="40%"
+          height="70px"
+          fontSize="1.5rem"
           onClick={handleNextBtnClick}
         />
       </GS.FlexRowDirWrap>

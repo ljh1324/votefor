@@ -7,7 +7,7 @@ import { handleCategoriesSet, handlePartiesSet } from "../context/reducer";
 import * as GS from "../components/GlobalStyle";
 import Header from "../components/Header";
 import Image from "../components/Image";
-import Button from "../components/Button";
+import { GreenButton } from "../components/buttons";
 
 import request from "../utils/request";
 
@@ -33,13 +33,10 @@ const Home = () => {
     <GS.FlexWrap>
       <Header />
       <Image src={"/vote.png"} width={"200px"} />
-      <Button
+      <GreenButton
         text={"투표하기"}
-        color={"#1abc9c"}
-        activeColor={"#16a085"}
         width={"100px"}
         height={"50px"}
-        fontColor={"white"}
         fontSize={"20px"}
         onClick={handleLinkBtnClick}
       />

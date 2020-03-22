@@ -7,7 +7,7 @@ import { handleCategorySet } from "../context/reducer";
 import * as GS from "../components/GlobalStyle";
 import TitleWithLogo from "../components/TitleWithLogo";
 import CategoryList from "../components/CategoryList";
-import Button from "../components/Button";
+import { GreenButton, BackButton } from "../components/buttons";
 
 import { objectToList } from "../utils/convert";
 import { filterOnlySelectedPartiesCategory } from "../utils/filter";
@@ -46,10 +46,6 @@ const CategorySelecting = () => {
     }
   };
 
-  const handlePreviousBtnClick = () => {
-    history.goBack();
-  };
-
   const toggleCategoryVotedState = categoryName => () => {
     let category = categories[categoryName];
     category.voted = !category.voted;
@@ -61,26 +57,13 @@ const CategorySelecting = () => {
       <TitleWithLogo text="관심 분야 선택" />
       <CategoryList categories={categoryList} toggleCategoryVotedState={toggleCategoryVotedState} />
       <GS.FlexRowDirWrap>
-        <Button
-          text={"이전"}
-          color={"white"}
-          activeColor={"#f1f2f6"}
-          width={"35%"}
-          height={"70px"}
-          fontColor={"black"}
-          fontSize={"1.5rem"}
-          border={"2px solid black"}
-          onClick={handlePreviousBtnClick}
-        />
-        <Button
-          text={"다음"}
-          color={"#1abc9c"}
-          activeColor={"#16a085"}
-          width={"35%"}
-          height={"70px"}
-          fontColor={"white"}
-          fontSize={"1.5rem"}
+        <BackButton width="35%" height="70px" fontSize="1.5rem" />
+        <GreenButton
+          text="다음"
+          width="35%"
+          height="70px"
           onClick={handleNextBtnClick}
+          fontSize="1.5rem"
         />
       </GS.FlexRowDirWrap>
     </GS.FlexWrapWithHorizontalCentering>

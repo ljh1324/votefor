@@ -1,6 +1,8 @@
 node_modules/
 build/
+frontend_build/
 log/
 .env
 .env.dev
 .env.prod
+classfication_words/config.json

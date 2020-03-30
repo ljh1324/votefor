@@ -1,0 +1,16 @@
+{
+  "name": "classfication_words",
+  "version": "1.0.0",
+  "description": "",
+  "main": "aiopen.js",
+  "dependencies": {
+    "request": "^2.88.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

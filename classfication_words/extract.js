@@ -1,4 +1,5 @@
 const fs = require('fs');
+const request = require('request');
 
 const isWord = (str) => {
   if (!str.length) return false;
@@ -76,12 +77,93 @@ const extractCategoryNamesOrderdByCount = (categories) => {
   return categoryNames;
 }
 
+// 참고: http://aiopen.etri.re.kr/guide_wiseNLU.php
+const extractNouns = (text) => {
+  const requestJson = {
+    'access_key': ACCESS_KEY,
+    'argument': {
+      'text': text,
+      'analysis_code': ANALYSIS_CODE
+    }
+  };
+
+  const options = {
+    url: URL,
+    body: JSON.stringify(requestJson),
+    headers: { 'Content-Type': 'application/json; charset=UTF-8' }
+  };
+
+  return new Promise((resolve, reject) => {
+    request.post(options, function (error, response, body) {
+      const { statusCode } = response;
+      if (error || statusCode !== 200) {
+        console.log(error);
+        console.log(statusCode);
+        reject(error);
+      }
+      const morphemesMap = {};
+
+      const { return_object: { sentence: sentences } } = JSON.parse(body);
+      sentences.forEach((sentence) => {
+        const morphologicalAnalysisResult = sentence.morp;
+        morphologicalAnalysisResult.forEach(morphemeInfo => {
+          let { lemma, type } = morphemeInfo;
+          if (!(lemma in morphemesMap)) {
+            morphemesMap[lemma] = {
+              text: lemma,
+              type,
+              count: 0
+            }
+          }
+          morphemesMap[lemma].count += 1;
+        });
+      });
+
+      const nouns = Object.values(morphemesMap).filter(({ type }) => type === 'NNG' || type === 'NNP' || type === 'NNB');
+      resolve(nouns);
+    });
+  });
+}
+
+const countWordsPerCategoryUsingExtractNounsFunction = async (promises) => {
+  const categories = {};
+  let text, nouns;
+
+  for (let i = 0; i < promises.length; i++) {
+    const { category, summary, contents } = promises[i];
+    text = summary + ' ' + contents;
+    nouns = await extractNouns(text);
+
+    if (!(category in categories)) {
+      categories[category] = { count: 0 }
+      categories[category].nouns = {};
+    }
+    categories[category].count += 1;
+
+    nouns.forEach(({ text, count }) => {
+      if (!(text in categories[category])) {
+        categories[category].nouns[text] = 0;
+      }
+      categories[category].nouns[text] += count;
+    });
+  }
+
+  return categories;
+}
+
 const rawData = fs.readFileSync('seed-data.json');
 const jsonData = JSON.parse(rawData);
 const { promises } = jsonData;
 
-const categories = countWordsPerCategory(promises);
-const categoryNames = extractCategoryNamesOrderdByCount(categories);
+const rawConfigData = fs.readFileSync('config.json');
+const { URL, ACCESS_KEY, ANALYSIS_CODE } = JSON.parse(rawConfigData);
 
-fs.writeFileSync('counting_appearance.json', JSON.stringify(categoryNames, null, 2));
-fs.writeFileSync('counting_words.json', JSON.stringify(categories, null, 2));
+const run = async () => {
+  const categories = await countWordsPerCategoryUsingExtractNounsFunction(promises);
+  const categoryNames = extractCategoryNamesOrderdByCount(categories);
+
+  fs.writeFileSync('counting_words.json', JSON.stringify(categories, null, 2));
+  fs.writeFileSync('counting_appearance.json', JSON.stringify(categoryNames, null, 2));
+}
+
+run();

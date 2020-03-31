@@ -168,17 +168,18 @@ const { promises } = jsonData;
 
 const rawConfigData = fs.readFileSync('config.json');
 const { URL, ACCESS_KEY, ANALYSIS_CODE } = JSON.parse(rawConfigData);
+const FOLDER = "result";
 
 const run = async () => {
-  // const categories = await countWordsPerCategoryUsingExtractNounsFunction(promises);
-  // const categoryNames = extractCategoryNamesOrderdByCount(categories);
+  const categories = await countWordsPerCategoryUsingExtractNounsFunction(promises);
+  const categoryNames = extractCategoryNamesOrderdByCount(categories);
 
-  // fs.writeFileSync('counting_words.json', JSON.stringify(categories, null, 2));
-  // fs.writeFileSync('counting_appearance.json', JSON.stringify(categoryNames, null, 2));
+  fs.writeFileSync(`${FOLDER}/counting_words.json`, JSON.stringify(categories, null, 2));
+  fs.writeFileSync(`${FOLDER}/counting_appearance.json`, JSON.stringify(categoryNames, null, 2));
 
-  const text = '';
-  const promisesIncludedText = extractPromisesIncludedText(promises, text, true);
-  fs.writeFileSync(`word_${text}_appearance.json`, JSON.stringify(promisesIncludedText, null, 2));
+  //const text = '';
+  //const promisesIncludedText = extractPromisesIncludedText(promises, text, true);
+  //fs.writeFileSync(`${FOLDER}/word_${text}_appearance.json`, JSON.stringify(promisesIncludedText, null, 2));
 }
 
 run();

@@ -72,12 +72,13 @@ const calculateJaccardDistances = (categories) => {
 }
 
 const run = () => {
-  const rawData = fs.readFileSync('counting_words.json');
+  const FOLDER = "result";
+  const rawData = fs.readFileSync(`${FOLDER}/counting_words.json`);
   const categories = Object.entries(JSON.parse(rawData));
 
   const jaccardDistances = calculateJaccardDistances(categories);
 
-  fs.writeFileSync('jaccard-distances.json', JSON.stringify({ jaccard: jaccardDistances }, null, 2));
+  fs.writeFileSync(`${FOLDER}/jaccard-distances.json`, JSON.stringify({ jaccard: jaccardDistances }, null, 2));
 }
 
 run();

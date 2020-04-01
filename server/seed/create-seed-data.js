@@ -5,10 +5,12 @@ import '../src/config/env';
 import db from '../src/database';
 
 const contents = fs.readFileSync(path.join(__dirname, 'seed-data.json'));
-const { categories, parties, promises } = JSON.parse(contents);
+const { participants, categories, parties, promises } = JSON.parse(contents);
 const { force } = process.env;
 
 /**
+ * participants: []   참여정당
+ *
  * categories: [
  *  {
  *    name: ""        카테고리명
@@ -32,6 +34,15 @@ const { force } = process.env;
  * ]
  */
 
+const generateRandomColor = () => {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i += 1) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
+
 const createCategoriesData = async () => {
   const results = await db.Category.bulkCreate(categories);
 
@@ -39,6 +50,13 @@ const createCategoriesData = async () => {
 };
 
 const createPartiesData = async () => {
+  parties.forEach((party, idx) => {
+    const { color } = party;
+    if (color === '') {
+      parties[idx].color = generateRandomColor();
+    }
+  });
+
   const results = await db.PoliticalParty.bulkCreate(parties);
 
   return results;
@@ -52,6 +70,11 @@ const createPromisesData = async () => {
     return acc;
   }, {});
 
+  const participantsMap = participants.reduce((map, participant) => {
+    map[participant] = true;
+    return map;
+  }, {});
+
   const partyList = await db.PoliticalParty.findAll({});
   const partyObj = partyList.reduce((acc, item) => {
     const { name, no } = item;
@@ -59,13 +82,19 @@ const createPromisesData = async () => {
     return acc;
   }, {});
 
-  promises.forEach((item, idx) => {
-    const { category, party } = item;
-    promises[idx].category_no = categoryObj[category];
-    promises[idx].political_party_no = partyObj[party];
+  const newPromises = promises.filter(promise => {
+    const { party } = promise;
+    return party in participantsMap;
   });
 
-  const results = await db.ElectionPromise.bulkCreate(promises);
+  newPromises.forEach((promise, idx) => {
+    const { category, party } = promise;
+
+    newPromises[idx].category_no = categoryObj[category];
+    newPromises[idx].political_party_no = partyObj[party];
+  });
+
+  const results = await db.ElectionPromise.bulkCreate(newPromises);
 
   return results;
 };

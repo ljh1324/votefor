@@ -16,7 +16,7 @@ const model = (sequelize, DataTypes) => {
         allowNull: false
       },
       summary: {
-        type: DataTypes.STRING(70),
+        type: DataTypes.TEXT,
         allowNull: false
       },
       contents: {

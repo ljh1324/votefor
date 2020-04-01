@@ -162,6 +162,11 @@ const extractPromisesIncludedText = (promises, text, total = false) => {
   });
 }
 
+const extractOnlyCategoryNames = (categories) => {
+  categories = sortByCount(categories);
+  return categories.map(category => { return { name: category.key } });
+}
+
 const rawData = fs.readFileSync('seed-data.json');
 const jsonData = JSON.parse(rawData);
 const { promises } = jsonData;
@@ -171,15 +176,20 @@ const { URL, ACCESS_KEY, ANALYSIS_CODE } = JSON.parse(rawConfigData);
 const FOLDER = "result";
 
 const run = async () => {
-  const categories = await countWordsPerCategoryUsingExtractNounsFunction(promises);
-  const categoryNames = extractCategoryNamesOrderdByCount(categories);
+  // const categories = await countWordsPerCategoryUsingExtractNounsFunction(promises);
+  // const categoryNames = extractCategoryNamesOrderdByCount(categories);
 
-  fs.writeFileSync(`${FOLDER}/counting_words.json`, JSON.stringify(categories, null, 2));
-  fs.writeFileSync(`${FOLDER}/counting_appearance.json`, JSON.stringify(categoryNames, null, 2));
+  // fs.writeFileSync(`${FOLDER}/counting_words.json`, JSON.stringify(categories, null, 2));
+  // fs.writeFileSync(`${FOLDER}/counting_appearance.json`, JSON.stringify(categoryNames, null, 2));
 
-  //const text = '';
-  //const promisesIncludedText = extractPromisesIncludedText(promises, text, true);
-  //fs.writeFileSync(`${FOLDER}/word_${text}_appearance.json`, JSON.stringify(promisesIncludedText, null, 2));
+  // const text = '';
+  // const promisesIncludedText = extractPromisesIncludedText(promises, text, true);
+  // fs.writeFileSync(`${FOLDER}/word_${text}_appearance.json`, JSON.stringify(promisesIncludedText, null, 2));
+
+  const categories = countWordsPerCategory(promises);
+  const categoryNames = extractOnlyCategoryNames(categories);
+
+  fs.writeFileSync(`${FOLDER}/categories.json`, JSON.stringify(categoryNames, null, 2));
 }
 
 run();

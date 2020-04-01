@@ -6,3 +6,4 @@ log/
 .env.dev
 .env.prod
 classfication_words/config.json
+classfication_words/result

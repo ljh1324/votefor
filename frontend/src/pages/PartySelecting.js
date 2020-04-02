@@ -11,6 +11,7 @@ import Message from "../components/Message";
 import { GreenButton } from "../components/buttons";
 
 import { objectToList } from "../utils/convert";
+import { sortBy } from "../utils/sort";
 
 const PartySelecting = () => {
   const history = useHistory();
@@ -22,6 +23,8 @@ const PartySelecting = () => {
   if (partyList.length === 0) {
     history.push("/");
   }
+  sortBy(partyList, "name");
+  console.log(partyList);
 
   const { dispatch } = useContext(AppDispatchContext);
 

@@ -12,6 +12,7 @@ import { GreenButton, BackButton } from "../components/buttons";
 
 import { objectToList } from "../utils/convert";
 import { filterOnlySelectedPartiesCategory } from "../utils/filter";
+import { sortBy } from "../utils/sort";
 
 const CategorySelecting = () => {
   const history = useHistory();
@@ -31,6 +32,7 @@ const CategorySelecting = () => {
   }
 
   categoryList = filterOnlySelectedPartiesCategory(categoryList, parties);
+  sortBy(categoryList, "name");
 
   const { dispatch } = useContext(AppDispatchContext);
 

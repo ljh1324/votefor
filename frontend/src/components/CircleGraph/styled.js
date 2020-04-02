@@ -1,5 +1,13 @@
 import styled from "styled-components";
 
+const GrapWithDeschWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-contet: center;
+  align-items: center;
+  width: 100%;
+`;
+
 const GraphWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -12,18 +20,27 @@ const GraphWrapper = styled.div`
 `;
 
 const DescWrapper = styled.div`
-  width: 40%;
-  display: flex;
-  flex-direction: column;
+  margin-top: 10px
+  width: 100%;
+  display: grid;
+  grid-template-columns: 250px 250px;
+  @media (max-width: 560px) {
+    grid-template-columns: 300px;
+  }
 `;
 
 const ItemWrapper = styled.div`
   display: flex;
   align-items: center;
+  padding: 15px;
 `;
 
 const DescText = styled.span`
   font-size: 1rem;
+
+  @media only screen and (max-width: 464px) {
+    display: 0.5rem;
+  }
 `;
 
 const Color = styled.div`
@@ -31,7 +48,12 @@ const Color = styled.div`
   height: 20px;
   background: ${props => props.color};
   border-radius: 20px;
-  margin: 0 10px;
+  margin-right: 10px;
+
+  @media only screen and (max-width: 560px) {
+    width: 15px;
+    height: 15px;
+  }
 `;
 
-export { GraphWrapper, DescWrapper, ItemWrapper, DescText, Color };
+export { GrapWithDeschWrapper, GraphWrapper, DescWrapper, ItemWrapper, DescText, Color };

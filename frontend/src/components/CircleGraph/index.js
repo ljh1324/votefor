@@ -27,9 +27,9 @@ const calculateAngleRanges = (nums, total) => {
 };
 
 const CircleGraph = ({ nums, items, total, width, padding }) => {
-  const cx = width / 2 + padding;
-  const cy = width / 2 + padding;
-  const radius = width / 2 - padding * 2;
+  const cx = width / 2;
+  const cy = width / 2;
+  const radius = width / 2 - padding;
   let renderingCircleGraph;
 
   if (nums.length >= 2) {
@@ -72,13 +72,15 @@ const CircleGraph = ({ nums, items, total, width, padding }) => {
   ));
 
   return (
-    <S.GraphWrapper>
-      <svg width={width} height={width}>
-        {renderingCircleGraph}
-        <circle cx={cx} cy={cy} r={radius / 3} fill="white" />
-      </svg>
+    <S.GrapWithDeschWrapper>
       <S.DescWrapper>{renderingItems}</S.DescWrapper>
-    </S.GraphWrapper>
+      <S.GraphWrapper>
+        <svg width={width} height={width}>
+          {renderingCircleGraph}
+          <circle cx={cx} cy={cy} r={radius / 3} fill="white" />
+        </svg>
+      </S.GraphWrapper>
+    </S.GrapWithDeschWrapper>
   );
 };
 

@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 const ItemWrapper = styled.li`
   width: 100%;
@@ -22,6 +22,7 @@ const ContentsWrapper = styled.div`
 
 const LineWrapper = styled.p`
   font-size: 1.3rem;
+  color: black;
   margin: 10px 0;
 `;
 

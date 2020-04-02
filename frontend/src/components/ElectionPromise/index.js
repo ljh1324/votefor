@@ -4,6 +4,8 @@ import { ACCEPT, REJECT } from "../../utils/voted-state";
 import OMark from "../marks/OMark";
 import XMark from "../marks/XMark";
 
+const DELTA = 150;
+
 const ElectionPromise = ({ summary, contents, voted, setPromiseVotedState }) => {
   const [isClicked, setState] = useState(false);
   const lines = contents.split("\n");
@@ -14,7 +16,7 @@ const ElectionPromise = ({ summary, contents, voted, setPromiseVotedState }) => 
 
       setTimeout(() => {
         window.scroll({
-          top: offsetTop,
+          top: offsetTop - DELTA,
           behavior: "smooth"
         });
       }, 100);

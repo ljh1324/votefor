@@ -8,7 +8,8 @@ import {
   CategorySelecting,
   VotingResult,
   PromiseSelecting,
-  NotFound
+  NotFound,
+  MadeBy
 } from "./pages";
 import "./App.css";
 
@@ -21,6 +22,7 @@ function App() {
         <Route exact path="/category" component={CategorySelecting} />
         <Route exact path="/promise/:page" component={PromiseSelecting} />
         <Route exact path="/result" component={VotingResult} />
+        <Route exact path="/made" component={MadeBy} />
         <Route exact path="*" component={NotFound} />
       </AppProvider>
     </div>

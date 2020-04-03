@@ -34,9 +34,22 @@ const FlexRowDirWrapDependOnScreenSize = styled.div`
   }
 `;
 
+const FlexColorContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  max-width: 600px;
+  min-width: 300px;
+  background: ${props => props.color};
+  border-radius: 25px;
+`;
+
 export {
   FlexWrap,
   FlexWrapWithHorizontalCentering,
   FlexRowDirWrap,
-  FlexRowDirWrapDependOnScreenSize
+  FlexRowDirWrapDependOnScreenSize,
+  FlexColorContainer
 };

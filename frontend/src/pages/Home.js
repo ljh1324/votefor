@@ -7,6 +7,8 @@ import { handleCategoriesSet, handlePartiesSet } from "../context/reducer";
 import * as GS from "../components/GlobalStyle";
 import Header from "../components/Header";
 import Image from "../components/Image";
+import Href from "../components/Href";
+
 import { GreenButton } from "../components/buttons";
 
 import request from "../utils/request";
@@ -40,6 +42,7 @@ const Home = () => {
         fontSize={"20px"}
         onClick={handleLinkBtnClick}
       />
+      <Href to="/made" title="made by" />
     </GS.FlexWrap>
   );
 };

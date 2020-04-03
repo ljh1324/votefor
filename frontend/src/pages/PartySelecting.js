@@ -24,7 +24,6 @@ const PartySelecting = () => {
     history.push("/");
   }
   sortBy(partyList, "name");
-  console.log(partyList);
 
   const { dispatch } = useContext(AppDispatchContext);
 

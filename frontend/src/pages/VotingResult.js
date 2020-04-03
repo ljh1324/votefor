@@ -6,6 +6,7 @@ import { handleCategoriesSet, handlePartiesSet } from "../context/reducer";
 
 import * as GS from "../components/GlobalStyle";
 import TitleWithLogo from "../components/TitleWithLogo";
+import AHref from "../components/AHref";
 import ResultList from "../components/ResultList";
 import { GreenButton } from "../components/buttons";
 
@@ -80,24 +81,29 @@ const VotingResult = () => {
     history.push("/party");
   };
 
+  const handleHomeBtnClick = () => {
+    history.push("/made");
+  };
+
   return (
     <GS.FlexWrapWithHorizontalCentering width="90%">
       <TitleWithLogo text="투표 결과" />
       <ResultList votingResultList={votingResultList} />
+      <AHref to="http://policy.nec.go.kr/" title="자세한 정책내용" />
       <GS.FlexRowDirWrapDependOnScreenSize>
         <GreenButton
           text="다시 하기"
-          width="50%"
+          width="100%"
           height="70px"
           fontSize="1.5rem"
           onClick={handleRedoBtnClick}
         />
         <GreenButton
-          text="다른 사람들은?"
-          width="50%"
+          text="만든이"
+          width="100%"
           height="70px"
           fontSize="1.5rem"
-          onClick={handleRedoBtnClick}
+          onClick={handleHomeBtnClick}
         />
       </GS.FlexRowDirWrapDependOnScreenSize>
     </GS.FlexWrapWithHorizontalCentering>

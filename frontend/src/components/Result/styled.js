@@ -38,6 +38,8 @@ const CategoryText = styled.div`
 
 const Text = styled.span`
   font-size: ${props => props.fontSize};
+  word-break: keep-all;
+  word-wrap: break-word;
 `;
 
 const Line = styled.hr`

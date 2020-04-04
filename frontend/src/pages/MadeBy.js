@@ -17,6 +17,16 @@ const makersList = [
     ]
   },
   {
+    title: "폰트",
+    makers: [
+      {
+        to: "https://fonts.google.com/specimen/Noto+Sans+KR?selection.family=Noto+Sans+KR",
+        title: "Noto Sans KR",
+        isLink: true
+      }
+    ]
+  },
+  {
     title: "정당정책",
     makers: [
       {

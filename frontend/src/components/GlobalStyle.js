@@ -46,10 +46,18 @@ const FlexColorContainer = styled.div`
   border-radius: 25px;
 `;
 
+const MessageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 20px 10px;
+  font-size: 0.9rem;
+`;
+
 export {
   FlexWrap,
   FlexWrapWithHorizontalCentering,
   FlexRowDirWrap,
   FlexRowDirWrapDependOnScreenSize,
-  FlexColorContainer
+  FlexColorContainer,
+  MessageWrapper
 };

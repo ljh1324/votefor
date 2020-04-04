@@ -50,6 +50,10 @@ const PartySelecting = () => {
     <GS.FlexWrapWithHorizontalCentering>
       <TitleWithLogo text="관심 정당 선택" />
       <Message text="관심 정당을 선택 후 다음 버튼을 눌러주세요!" />
+      <GS.MessageWrapper>
+        <Message text="비례대표 투표 참여 정당만 있으며" />
+        <Message text="2020.3.21 중앙선거관리위원회에 등록된 공약들의 정당입니다." />
+      </GS.MessageWrapper>
       <PartyList parties={partyList} togglePartySelectedState={togglePartySelectedState} />
       <GreenButton
         text="다음"

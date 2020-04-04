@@ -11,7 +11,7 @@ import Href from "../components/Href";
 
 import { GreenButton } from "../components/buttons";
 
-import request from "../utils/request";
+import { data } from "../promise-data";
 
 const Home = () => {
   const history = useHistory();
@@ -22,13 +22,9 @@ const Home = () => {
   };
 
   useEffect(() => {
-    request
-      .get("/v1/promise")
-      .then(res => res.json())
-      .then(res => {
-        dispatch(handleCategoriesSet(res.categories));
-        dispatch(handlePartiesSet(res.parties));
-      });
+    const { categories, parties } = data;
+    dispatch(handleCategoriesSet(categories));
+    dispatch(handlePartiesSet(parties));
   }, [dispatch]);
 
   return (

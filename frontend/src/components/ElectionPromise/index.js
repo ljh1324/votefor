@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import * as S from "./styled";
 import { ACCEPT, REJECT } from "../../utils/voted-state";
 import OMark from "../marks/OMark";
@@ -9,6 +9,7 @@ const DELTA = 150;
 const ElectionPromise = ({ summary, contents, voted, setPromiseVotedState }) => {
   const [isClicked, setState] = useState(false);
   const lines = contents.split("\n");
+  const itemRef = useRef();
 
   const handlePromiseClick = e => {
     if (!isClicked) {
@@ -24,12 +25,26 @@ const ElectionPromise = ({ summary, contents, voted, setPromiseVotedState }) => 
     setState(!isClicked);
   };
 
-  const handleOMarkClick = () => {
+  const handleOMarkClick = e => {
+    const { offsetTop } = itemRef.current;
+
+    window.scroll({
+      top: offsetTop - DELTA,
+      behavior: "smooth"
+    });
+
     setState(!isClicked);
     setPromiseVotedState(ACCEPT);
   };
 
   const handleXMarkClick = () => {
+    const { offsetTop } = itemRef.current;
+
+    window.scroll({
+      top: offsetTop - DELTA,
+      behavior: "smooth"
+    });
+
     setState(!isClicked);
     setPromiseVotedState(REJECT);
   };
@@ -38,7 +53,7 @@ const ElectionPromise = ({ summary, contents, voted, setPromiseVotedState }) => 
 
   return (
     <>
-      <S.ItemWrapper isClicked={isClicked || voted} onClick={handlePromiseClick}>
+      <S.ItemWrapper isClicked={isClicked || voted} onClick={handlePromiseClick} ref={itemRef}>
         {summary}
         {voted === 1 ? (
           <S.SVGWrapper marginLeft={"5px"}>

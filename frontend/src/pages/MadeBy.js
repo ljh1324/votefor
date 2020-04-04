@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import * as GS from "../components/GlobalStyle";
 import Maker from "../components/Maker";
@@ -69,6 +69,13 @@ const makersList = [
 ];
 
 const MadeBy = () => {
+  useEffect(() => {
+    window.scroll({
+      top: 0,
+      behavior: "smooth"
+    });
+  }, []);
+
   return (
     <GS.FlexWrap>
       <TitleWithLogo text="만든이" />

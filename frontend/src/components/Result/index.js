@@ -13,7 +13,7 @@ const Result = ({ name, parties, total, finish }) => {
       <S.ResultWrapper>
         <S.CategoryText finish={finish}>{name}</S.CategoryText>
         <S.ImageWrapper>
-          <Image src="/box.png" width="30%" />
+          <Image src="/box.png" width="200px" />
         </S.ImageWrapper>
         <S.Text fontSize="1.5rem">원하는 공약이 없어요.</S.Text>
       </S.ResultWrapper>

@@ -17,9 +17,9 @@ const BackButton = ({ width, height, fontSize }) => {
       activeColor="#f1f2f6"
       width={width}
       height={height}
-      fontColor="black"
+      fontColor="#57606f"
       fontSize={fontSize}
-      border="2px solid black"
+      border="2px solid #1abc9c"
       onClick={handlePreviousBtnClick}
     />
   );

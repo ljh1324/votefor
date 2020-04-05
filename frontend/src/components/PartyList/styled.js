@@ -8,7 +8,7 @@ const ListWrapper = styled.div`
   @media (max-width: 1100px) {
     grid-template-columns: 350px 350px;
   }
-  @media (max-width: 800px) {
+  @media (max-width: 734px) {
     grid-template-columns: 350px;
   }
 `;

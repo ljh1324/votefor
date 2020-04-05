@@ -5,7 +5,7 @@ const Button = styled.div`
   max-width: 300px;
   text-align: center;
   padding: 10px;
-  margin: 20px;
+  margin: 15px;
   background: ${props => props.color};
   color: ${props => props.fontColor};
   cursor: pointer;

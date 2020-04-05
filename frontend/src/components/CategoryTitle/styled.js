@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const TitleWrapper = styled.div`
-  width: 100%;
+  width: 90%;
   text-align: center;
   padding: 10px 0;
   border: 5px solid #16a085;

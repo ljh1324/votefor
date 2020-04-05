@@ -19,7 +19,7 @@ const FlexWrapWithHorizontalCentering = styled.div`
 const FlexRowDirWrap = styled.div`
   display: flex;
   width: 100%;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 `;
 

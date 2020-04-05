@@ -61,10 +61,10 @@ const CategorySelecting = () => {
       <Message text="관심 분야를 선택 후 다음 버튼을 눌러주세요!" />
       <CategoryList categories={categoryList} toggleCategoryVotedState={toggleCategoryVotedState} />
       <GS.FlexRowDirWrap>
-        <BackButton width="35%" height="70px" fontSize="1.5rem" />
+        <BackButton width="40%" height="70px" fontSize="1.5rem" />
         <GreenButton
           text="다음"
-          width="35%"
+          width="40%"
           height="70px"
           onClick={handleNextBtnClick}
           fontSize="1.5rem"

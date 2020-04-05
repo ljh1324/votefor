@@ -62,7 +62,7 @@ const PromiseSelecting = ({ match }) => {
   };
 
   return (
-    <GS.FlexWrapWithHorizontalCentering width="80%">
+    <GS.FlexWrapWithHorizontalCentering width="95%">
       <TitleWithLogo text="관심 공약 선택" />
       {page === 0 ? (
         <>
@@ -77,7 +77,7 @@ const PromiseSelecting = ({ match }) => {
         parties={parties}
       />
       <GS.FlexRowDirWrap>
-        <BackButton text={"이전"} width="40%" height="70px" fontSize="1.5rem" />
+        <BackButton width="40%" height="70px" fontSize="1.5rem" />
         <GreenButton
           text={page + 1 === length ? "투표" : "다음"}
           width="40%"

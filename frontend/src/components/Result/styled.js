@@ -45,6 +45,7 @@ const Text = styled.span`
 const Line = styled.hr`
   width: ${props => props.width};
   color: ${props => props.color};
+  background: ${props => props.color};
   height: ${props => props.height};
   border-radius: 10px;
   margin: 0 10px;

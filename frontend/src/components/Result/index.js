@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import * as S from "./styled";
 import PartyPromiseList from "../PartyPromiseList";
@@ -21,7 +21,7 @@ const Result = ({ name, parties, total, finish }) => {
   }
 
   const renderingParties = parties.map(({ promises, color, image }) => (
-    <>
+    <Fragment key={image}>
       <S.PartyWrapper>
         <Image src={`/${image}`} width="80px" />
         <S.Line width={`${(promises.length / total) * 65}%`} color={color} height={"30px"} />
@@ -30,7 +30,7 @@ const Result = ({ name, parties, total, finish }) => {
         }표)`}</S.Text>
       </S.PartyWrapper>
       <PartyPromiseList promises={promises} />
-    </>
+    </Fragment>
   ));
 
   const nums = [];

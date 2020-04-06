@@ -65,7 +65,7 @@ const CircleGraph = ({ nums, items, total, width, padding }) => {
   }
 
   const renderingItems = items.map(({ name, color }, idx) => (
-    <S.ItemWrapper>
+    <S.ItemWrapper key={name}>
       <S.Color color={color} />
       <S.DescText>{`${name} (${Math.round((nums[idx] / total) * 1000) / 10}%)`}</S.DescText>
     </S.ItemWrapper>

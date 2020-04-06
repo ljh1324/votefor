@@ -5,7 +5,7 @@ import * as S from "./styled";
 
 const ResultList = ({ votingResultList }) => {
   const renderingVotingResult = votingResultList.map(({ name, parties, total, finish }) => (
-    <Result name={name} parties={parties} total={total} finish={finish} />
+    <Result key={name} name={name} parties={parties} total={total} finish={finish} />
   ));
 
   return <S.ListWrapper>{renderingVotingResult}</S.ListWrapper>;

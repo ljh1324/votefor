@@ -6,6 +6,7 @@ const PartyList = ({ parties, togglePartySelectedState }) => {
   const renderingParties = parties.map(({ name, selected }) => {
     return (
       <Party
+        key={name}
         name={name}
         selected={selected}
         togglePartySelectedState={togglePartySelectedState(name)}

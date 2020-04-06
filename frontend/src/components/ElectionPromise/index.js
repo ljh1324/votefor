@@ -49,7 +49,7 @@ const ElectionPromise = ({ summary, contents, voted, setPromiseVotedState }) => 
     setPromiseVotedState(REJECT);
   };
 
-  const renderingLines = lines.map(line => <S.LineWrapper>- {line}</S.LineWrapper>);
+  const renderingLines = lines.map(line => <S.LineWrapper key={line}>- {line}</S.LineWrapper>);
 
   return (
     <>

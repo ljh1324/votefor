@@ -40,9 +40,9 @@ const PromiseSelecting = ({ match }) => {
   }
 
   let { page } = match.params;
+  page = parseInt(page);
   const length = categoryList.length;
   const name = categoryList[page].name;
-  page = parseInt(page);
 
   const setPromises = promises => {
     dispatch(handlePromisesSet(name, promises));

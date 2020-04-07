@@ -104,11 +104,12 @@ export const reducer = (state = initialState, action) => {
         }
       };
     case SET_PROMISES:
+      const newCategories = {...state.categories};
+      newCategories[payload.key] = payload.category;
       return {
         ...state,
         categories: {
-          ...state.categories,
-          [payload.key]: payload.category
+          ...newCategories
         }
       };
     case SET_PARTIES:

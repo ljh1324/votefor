@@ -16,7 +16,7 @@ const ContentsWrapper = styled.div`
   background: #fff;
 
   transition: all 0.9s ease;
-  max-height: ${props => (props.isClicked ? "10000px" : "0px")};
+  max-height: ${props => (props.isClicked ? "auto" : "0")};
   opacity: ${props => (props.isClicked ? "1" : "0")};
 `;
 

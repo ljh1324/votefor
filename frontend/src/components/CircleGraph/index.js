@@ -30,6 +30,7 @@ const CircleGraph = ({ nums, items, total, width, padding }) => {
   const cx = width / 2;
   const cy = width / 2;
   const radius = width / 2 - padding;
+  const viewBox = `0 0 ${width} ${width}`;
   let renderingCircleGraph;
 
   if (nums.length >= 2) {
@@ -75,7 +76,7 @@ const CircleGraph = ({ nums, items, total, width, padding }) => {
     <S.GrapWithDeschWrapper>
       <S.DescWrapper>{renderingItems}</S.DescWrapper>
       <S.GraphWrapper>
-        <svg width={width} height={width}>
+        <svg width={width} height={width} viewBox={viewBox}>
           {renderingCircleGraph}
           <circle cx={cx} cy={cy} r={radius / 3} fill="white" />
         </svg>

@@ -8,9 +8,11 @@ const ElectionMark = ({ size, strokeWidth, top }) => {
   const radians = ((angle - 90) * Math.PI) / 180.0;
   const nx = cx + radius * Math.cos(radians);
   const ny = cy + radius * Math.sin(radians);
+  const side = size + strokeWidth * 2;
+  const viewBox = `0 0 ${side} ${side}`;
 
   return (
-    <svg width={size + strokeWidth * 2} height={size + strokeWidth * 2}>
+    <svg width={side} height={side} viewBox={viewBox}>
       <circle
         cx={cx + strokeWidth}
         cy={cy + strokeWidth}

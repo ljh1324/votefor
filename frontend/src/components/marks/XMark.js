@@ -1,8 +1,11 @@
 import React from "react";
 
 const XMark = ({ size, strokeWidth }) => {
+  const side = size + strokeWidth * 2;
+  const viewBox = `0 0 ${side} ${side}`;
+
   return (
-    <svg width={size + strokeWidth * 2} height={size + strokeWidth * 2}>
+    <svg width={side} height={side} viewBox={viewBox}>
       <line
         x1={strokeWidth}
         y1={strokeWidth}

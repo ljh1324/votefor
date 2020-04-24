@@ -7,6 +7,22 @@ const ItemWrapper = styled.div`
   padding: 10px 0;
   margin: 25px;
   font-size: 1.5rem;
+  -ms-grid-column: ${props => {
+    return (props.order % 3) + 1;
+  }};
+  -ms-grid-row: ${props => {
+    return parseInt(props.order / 3) + 1;
+  }};
+
+  @media (max-width: 1100px) {
+    -ms-grid-column: ${props => {
+      return (props.order % 2) + 1;
+    }};
+    -ms-grid-row: ${props => {
+      return parseInt(props.order / 2) + 1;
+    }};
+  }
+
   border: ${props => (props.selected ? "5px solid #16a085" : "2px solid gray")};
   border-radius: 10px;
   box-sizing: border-box;

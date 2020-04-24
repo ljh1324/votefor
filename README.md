@@ -32,8 +32,6 @@ $ npm start
 - Express: Node.js를 위한 빠르고 간편한 웹 프레임워크
 - MySQL: 관계형 데이터베이스 관리 시스템
 - Sequelize: Node.js 기반의 ORM. PostgreSQL, MySQL, MariaDB, SQLite, MS-SQL을 지원
-- NginX: 트래픽이 많은 웹사이트를 위해 확장성을 위해 설계한 비동기 이벤트 기반구조의 웹 서버 소프트웨어
-- Docker: 컨테이너 기반의 오픈소스 가상화 플랫폼
 - React: 사용자 인터페이스를 만들기 위한 JavaScript 라이브러리
 - Styled Components: CSS-in-JS 라이브러리
 - Babel: ES6/ES7 코드를 ECMAScript5 코드로 transpiling 하기 위한 도구
